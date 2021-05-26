@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AngleFighter
 {
-    public partial class Form1 : Form
+    public partial class Form_Start : Form
     {
-        public Form1()
+        public Form_Start()
         {
             InitializeComponent();
         }

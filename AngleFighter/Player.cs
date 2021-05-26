@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace AngleFighter
 {
-    class Class1
+    class Player
     {
+
+
     }
 }

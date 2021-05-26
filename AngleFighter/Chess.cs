@@ -8,5 +8,6 @@ namespace AngleFighter
 {
     class Chess
     {
+
     }
 }

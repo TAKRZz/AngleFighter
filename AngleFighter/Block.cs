@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace AngleFighter
 {
+
+        // 方块
     class Block
     {
+
+        public int x0 { get; set; }
+        public int y0 { get; set; }
+        public int color { get; set; }
+
     }
 }
