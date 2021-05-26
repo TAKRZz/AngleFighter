@@ -55,6 +55,9 @@ namespace AngleFighter
         // 检测算法
         bool isPlaceAble() { return false; }
 
+        // Move 生成 string
+        string moveToString() { return null; }
+
         
     }
 }
