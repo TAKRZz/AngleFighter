@@ -39,5 +39,11 @@ namespace AngleFighter
         {
             return anchor.ToString() + direction + No;
         }
+
+        //提供棋子编号的查询
+        public int GetNo()
+        {
+            return No;
+        }
     }
 }

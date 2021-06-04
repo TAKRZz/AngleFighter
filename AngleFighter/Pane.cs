@@ -12,6 +12,9 @@ namespace AngleFighter
         //记录下棋的次序
         static int order = 0;
 
+        //记录当前下的棋
+        Step step;
+
         //定义棋盘结构
         List<Grid> grids = new List<Grid>(100);
 
@@ -23,8 +26,8 @@ namespace AngleFighter
 
             for(int count = 0; count < grids.Capacity; count++)
             {
-                grids.Add(new Grid(x, y));
-                x = Grid.length * (count % 9);//
+                grids.Add(new Grid(x, y));//将棋盘初始化为空白棋子
+                x = Grid.length * (count % 9);
                 y = Grid.length * ((count+1) / 10);
             }
         }
@@ -40,7 +43,7 @@ namespace AngleFighter
 
 
         // 下棋,利用棋子的锚点位置，将其贴合于最近的格子
-        void PlayChess(Chess chess)
+        public void PlayChess(Chess chess)
         {
             //下棋次序加一
             Pane.order++;
@@ -74,34 +77,27 @@ namespace AngleFighter
                 }
             }
 
+            //记录这一次下的棋
+            step = new Step(chess,order);
 
         }
 
         // 检测算法
         bool isPlaceAble(Chess chess)
         {
-            
-            //检测是否有棋子覆盖的情况
+
             foreach (var grid in chess.grids)
             {
                 foreach (var item in grids)
                 {
                     if(grid.GetX() == item.GetX() && grid.GetY() == item.GetY())
                     {
-                        if (item.GetColor() > 0) return false;
+                        if (item.GetColor() > 0) return false;//棋子覆盖，则不能下棋
                     }
                 }
             }
-            //检测是否不满足游戏规定的对角放置棋子
-
+            
             return true;
-        }
-
-        // Move 生成 string
-        string moveToString(Chess chess)
-        {
-            Step step = new Step(chess, Pane.order);
-            return step.ToString();
         }
 
         //根据输入的位置坐标修改格子的颜色
@@ -114,6 +110,12 @@ namespace AngleFighter
                     item.SetColor(color);
                 }
             }
+        }
+
+        //得到下棋的步骤信息，用于网络通信
+        public string ToStep()
+        {
+            return step.ToString();
         }
     }
 }
