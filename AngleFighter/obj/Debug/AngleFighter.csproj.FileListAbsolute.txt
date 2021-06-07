@@ -1,0 +1,16 @@
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\bin\Debug\AngleFighter.exe.config
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\bin\Debug\AngleFighter.exe
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\bin\Debug\AngleFighter.pdb
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.csprojAssemblyReference.cache
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.Properties.Resources.resources
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.csproj.GenerateResource.cache
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.csproj.CoreCompileInputs.cache
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.exe
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.pdb
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.RoomSelect.resources
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.BeginForm.resources
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.RoomForm1.resources
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.RoomForm2.resources
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.RoomIPForm.resources
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.GameForm.resources
+D:\c#HW\C#AngleFighter\AngleFighter-main\AngleFighter\obj\Debug\AngleFighter.SetForm.resources
