@@ -23,6 +23,7 @@ namespace AngleFighter
         //创建房间，返回房间号
         int CreateRoom()
         {
+            //查询IP
             return IP;
         }
 
@@ -40,15 +41,23 @@ namespace AngleFighter
         //根据棋子编号进行选择棋子，利用棋盘的接口进行下棋
         void PlayChess(int chessNo)
         {
-            foreach (var chess in chesses)
+            Chess chess = ChooseChess(chessNo);
+            pane.PlayChess(chess);//下棋
+            sendMessage();//发送网络信息
+            chesses.Remove(chess);//将棋子从剩余棋子当中移除
+        }
+
+        //选择棋子
+        Chess ChooseChess(int No)
+        {
+            foreach(Chess chess in chesses)
             {
-                if (chess.GetNo() == chessNo)
+                if(chess.GetNo() == No)
                 {
-                    pane.PlayChess(chess);//下棋
-                    sendMessage();//发送网络信息
-                    chesses.Remove(chess);//将棋子从剩余棋子当中移除
+                    return chess;
                 }
             }
+            return null;
         }
     }
 }

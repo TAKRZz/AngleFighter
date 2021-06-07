@@ -1,0 +1,5 @@
+C:\Users\24962\source\repos\TAKRZz\AngleFighter\AngleFighter\obj\Debug\AngleFighter.csprojAssemblyReference.cache
+C:\Users\24962\source\repos\TAKRZz\AngleFighter\AngleFighter\obj\Debug\AngleFighter.Form_Start.resources
+C:\Users\24962\source\repos\TAKRZz\AngleFighter\AngleFighter\obj\Debug\AngleFighter.Properties.Resources.resources
+C:\Users\24962\source\repos\TAKRZz\AngleFighter\AngleFighter\obj\Debug\AngleFighter.csproj.GenerateResource.cache
+C:\Users\24962\source\repos\TAKRZz\AngleFighter\AngleFighter\obj\Debug\AngleFighter.csproj.CoreCompileInputs.cache

@@ -9,11 +9,15 @@ using System.Drawing;
 namespace AngleFighter
 {
     //抽象棋子，用于各种棋子的统一模板
-    abstract class Chess
+    public abstract class Chess
     {
         //棋子编号，用于棋子的唯一标识，在具体棋子当中，应该为每一个类棋子分配一个固定的编号
         private int No;
-
+        public int num
+        {
+            get;
+            set;
+        }
         //棋子方向，用于旋转棋子
         int direction;
         const int UP = 0;
@@ -45,12 +49,15 @@ namespace AngleFighter
         {
             return No;
         }
+
+        
     }
     //目前先写了11个棋子的一部分，有问题好改，rotate方法暂未完全完成
     //妻子一
-    public class chess01 : Chess
+    public class Chess01 : Chess
     {
         int No = 1;
+        
         Grid anchor = new Grid(0, 0, 1);
         public void Init()
         {
@@ -60,7 +67,7 @@ namespace AngleFighter
         public void Rotate(int direction) { }
     }
     //棋子二
-    public class chess02 : Chess
+    public class Chess02 : Chess
     {
         int No = 2;
         Grid anchor = new Grid(0, 0, 1);
