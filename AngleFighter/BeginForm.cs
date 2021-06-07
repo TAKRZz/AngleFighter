@@ -41,8 +41,8 @@ namespace AngleFighter
 
         private void Begin(object sender, EventArgs e)
         {
-            this.Width = 944;
-            this.Height = 656;
+            //this.Width = 944;
+            //this.Height = 656;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
 
