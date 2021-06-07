@@ -28,7 +28,7 @@ namespace AngleFighter
         //棋子锚点，用于限定整个棋子的初始位置和颜色
         public Grid anchor;
 
-        //棋子集合，用于表示棋子 
+        //棋子集合，用于表示棋子
         public List<Grid> grids = new List<Grid>();
         
 
@@ -54,10 +54,9 @@ namespace AngleFighter
     }
     //目前先写了11个棋子的一部分，有问题好改，rotate方法暂未完全完成
     //妻子一
-    public class Chess01 : Chess
+    public class chess01 : Chess
     {
         int No = 1;
-        
         Grid anchor = new Grid(0, 0, 1);
         public void Init()
         {
@@ -67,7 +66,7 @@ namespace AngleFighter
         public void Rotate(int direction) { }
     }
     //棋子二
-    public class Chess02 : Chess
+    public class chess02 : Chess
     {
         int No = 2;
         Grid anchor = new Grid(0, 0, 1);
