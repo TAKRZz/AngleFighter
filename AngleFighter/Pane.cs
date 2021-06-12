@@ -48,6 +48,9 @@ namespace AngleFighter
             //下棋次序加一
             Pane.order++;
 
+            //记录棋子的初始状态，用于不能下棋时的状态恢复
+            Chess tempChess = chess;
+
             //将棋子贴在最近的格子
             int x = chess.anchor.GetX();
             int y = chess.anchor.GetY();
@@ -74,18 +77,29 @@ namespace AngleFighter
                 foreach (var grid in chess.grids)
                 {
                     ChangeColor(grid.GetX(), grid.GetY(), grid.GetColor());
+                    //记录这一次下的棋
+                    step = new Step(chess, order);
                 }
             }
-
-            //记录这一次下的棋
-            step = new Step(chess,order);
+            else
+            {
+                //棋子下不了 ，应该恢复棋子初始状态，并且将系统记录下棋次序减一
+                Console.WriteLine("you can't place a chess here");
+                chess = tempChess;
+                order--;
+            }
 
         }
 
         // 检测算法
         bool isPlaceAble(Chess chess)
         {
+            if (IsOver(chess))
+            {
+                return false;
+            }
 
+            //棋子覆盖与否
             foreach (var grid in chess.grids)
             {
                 foreach (var item in grids)
@@ -94,22 +108,50 @@ namespace AngleFighter
                     {
                         if (item.GetColor() > 0) return false;//棋子覆盖，则不能下棋
                     }
+
+                    if (grid.GetX() + Grid.length == item.GetX() && grid.GetY() == item.GetY())
+                    {
+                        if (item.GetColor()==grid.GetColor()) return false;
+                    }
+                    if (grid.GetX()  == item.GetX() && grid.GetY() + Grid.length == item.GetY())
+                    {
+                        if (item.GetColor() == grid.GetColor()) return false;
+                    }
+                    if (grid.GetX() - Grid.length== item.GetX() && grid.GetY() == item.GetY())
+                    {
+                        if (item.GetColor() == grid.GetColor()) return false;
+                    }
+                    if (grid.GetX() == item.GetX() && grid.GetY() - Grid.length == item.GetY())
+                    {
+                        if (item.GetColor() == grid.GetColor()) return false;
+                    }
                 }
             }
-            
+
+            for (int i = 0; i < chess.num; i++)
+            {
+                return AngleCheck(chess.grids[i]);
+            }
+
             return true;
         }
 
         //根据输入的位置坐标修改格子的颜色
         void ChangeColor(int x,int y,int color)
         {
+            GetGrid(x,y).SetColor(color);
+        }
+
+        Grid GetGrid(int x, int y)
+        {
             foreach (var item in grids)
             {
                 if (item.GetX() == x && item.GetY() == y)
                 {
-                    item.SetColor(color);
+                    return item;
                 }
             }
+            return null;
         }
 
         //得到下棋的步骤信息，用于网络通信
@@ -117,5 +159,38 @@ namespace AngleFighter
         {
             return step.ToString();
         }
+
+        //四角检测
+        private bool AngleCheck(Grid grid)
+        {
+            if (GetGrid(grid.GetX() + Grid.length, grid.GetY() + Grid.length).GetColor()== grid.GetColor())
+            {
+                return false;
+            }
+            if (GetGrid(grid.GetX() + Grid.length, grid.GetY() - Grid.length).GetColor() == grid.GetColor())
+            {
+                return false;
+            }
+            if (GetGrid(grid.GetX() - Grid.length, grid.GetY() + Grid.length).GetColor() == grid.GetColor())
+            {
+                return false;
+            }
+            if (GetGrid(grid.GetX() - Grid.length, grid.GetY() - Grid.length).GetColor() == grid.GetColor())
+            {
+                return false;
+            }
+            return true;
+        }
+
+        //越界检测
+        bool IsOver(Chess chess)
+        {
+            foreach (Grid grid in chess.grids)
+            {
+                if (this.grids.Contains(grid)) return false;
+            }
+            return true ;
+        }
+
     }
 }
