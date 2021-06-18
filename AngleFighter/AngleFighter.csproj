@@ -49,12 +49,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chess.cs" />
+    <Compile Include="MiniClient.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Host.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MiniHost.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="BeginForm.cs">
       <SubType>Form</SubType>
