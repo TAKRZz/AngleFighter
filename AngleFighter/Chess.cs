@@ -26,7 +26,7 @@ namespace AngleFighter
         const int RIGHT = 3;
 
         //棋子锚点，用于限定整个棋子的初始位置和颜色
-        public Grid anchor;
+        public Grid anchor = new Grid();
 
         //棋子集合，用于表示棋子
         public List<Grid> grids = new List<Grid>();
@@ -43,7 +43,6 @@ namespace AngleFighter
             }
 
         }
-
         //旋转棋子
         public abstract void Rotate();
         //通过锚点初始化棋子在棋盘上的位置
@@ -52,7 +51,6 @@ namespace AngleFighter
             anchor.SetX(x);
             anchor.SetY(y);
         }
-
         //棋子的ToString方法
         public override string ToString()
         {
@@ -72,12 +70,15 @@ namespace AngleFighter
     class Chess01 : Chess
     {
         int No = 1;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         int count = 1;
         override
             public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
         }
         //不需要旋转
         override
@@ -88,13 +89,16 @@ namespace AngleFighter
     class Chess02 : Chess
     {
         int No = 2;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid = new Grid(0, Grid.length);
         int count = 2;
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid);
         }
         override
@@ -115,14 +119,17 @@ namespace AngleFighter
     class Chess03 : Chess
     {
         int No = 3;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(0, 2 * Grid.length);
         int count = 2;
         override
     public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid2);
             grids.Add(grid1);
         }
@@ -144,14 +151,17 @@ namespace AngleFighter
     class Chess04 : Chess
     {
         int No = 4;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(Grid.length, Grid.length);
         int count = 3;
         override
     public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid2);
         }
@@ -173,7 +183,10 @@ namespace AngleFighter
     class Chess05 : Chess
     {
         int No = 5;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(0, 2 * Grid.length);
         Grid grid3 = new Grid(0, 3 * Grid.length);
@@ -181,7 +194,7 @@ namespace AngleFighter
         override
 public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid3);
             grids.Add(grid1);
             grids.Add(grid2);
@@ -204,7 +217,10 @@ public void Init()
     class Chess06 : Chess
     {
         int No = 6;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(Grid.length, 0);
         Grid grid2 = new Grid(Grid.length, Grid.length);
         Grid grid3 = new Grid(Grid.length, 2 * Grid.length);
@@ -212,7 +228,7 @@ public void Init()
         override
 public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid3);
             grids.Add(grid2);
@@ -235,7 +251,10 @@ public void Init()
     class Chess07 : Chess
     {
         int No = 7;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(0, 2 * Grid.length);
         Grid grid3 = new Grid(Grid.length, Grid.length);
@@ -243,7 +262,7 @@ public void Init()
         override
 public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid2);
             grids.Add(grid3);
             grids.Add(grid2);
@@ -266,7 +285,10 @@ public void Init()
     class Chess08 : Chess
     {
         int No = 8;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(Grid.length, 0);
         Grid grid3 = new Grid(Grid.length, Grid.length);
@@ -274,7 +296,7 @@ public void Init()
         override
 public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid2);
             grids.Add(grid3);
@@ -297,7 +319,10 @@ public void Init()
     class Chess09 : Chess
     {
         int No = 9;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(Grid.length, 0);
         Grid grid2 = new Grid(Grid.length, -Grid.length);
         Grid grid3 = new Grid(2 * Grid.length, -Grid.length);
@@ -305,7 +330,7 @@ public void Init()
         override
 public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid2);
             grids.Add(grid3);
@@ -328,7 +353,10 @@ public void Init()
     class Chess10 : Chess
     {
         int No = 10;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(0, 2 * Grid.length);
         Grid grid3 = new Grid(0, 3 * Grid.length);
@@ -337,7 +365,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid4);
             grids.Add(grid1);
             grids.Add(grid2);
@@ -361,7 +389,10 @@ public void Init()
     class Chess11 : Chess
     {
         int No = 11;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(Grid.length, 0);
         Grid grid2 = new Grid(0, Grid.length);
         Grid grid3 = new Grid(0, 2 * Grid.length);
@@ -370,7 +401,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid2);
             grids.Add(grid3);
@@ -394,7 +425,10 @@ public void Init()
     class Chess12 : Chess
     {
         int No = 12;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(Grid.length, Grid.length);
         Grid grid3 = new Grid(Grid.length, 2 * Grid.length);
@@ -403,7 +437,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid2);
             grids.Add(grid4);
@@ -427,7 +461,10 @@ public void Init()
     class Chess13 : Chess
     {
         int No = 13;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(Grid.length, 0);
         Grid grid3 = new Grid(Grid.length, Grid.length);
@@ -436,7 +473,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid2);
             grids.Add(grid4);
@@ -460,7 +497,10 @@ public void Init()
     class Chess14 : Chess
     {
         int No = 14;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, 2 * Grid.length);
         Grid grid2 = new Grid(Grid.length, 0);
         Grid grid3 = new Grid(Grid.length, Grid.length);
@@ -469,7 +509,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid2);
             grids.Add(grid4);
@@ -493,7 +533,10 @@ public void Init()
     class Chess15 : Chess
     {
         int No = 15;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(0, 2 * Grid.length);
         Grid grid3 = new Grid(0, 3 * Grid.length);
@@ -502,7 +545,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid3);
             grids.Add(grid4);
             grids.Add(grid1);
@@ -526,7 +569,10 @@ public void Init()
     class Chess16 : Chess
     {
         int No = 16;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(Grid.length, 0);
         Grid grid2 = new Grid(Grid.length, Grid.length);
         Grid grid3 = new Grid(Grid.length, 2 * Grid.length);
@@ -535,7 +581,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid3);
             grids.Add(grid4);
             grids.Add(grid1);
@@ -559,7 +605,10 @@ public void Init()
     class Chess17 : Chess
     {
         int No = 17;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(0, 2 * Grid.length);
         Grid grid3 = new Grid(Grid.length, 0);
@@ -568,7 +617,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid2);
             grids.Add(grid4);
             grids.Add(grid1);
@@ -592,7 +641,10 @@ public void Init()
     class Chess18 : Chess
     {
         int No = 18;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(-Grid.length, Grid.length);
         Grid grid2 = new Grid(0, Grid.length);
         Grid grid3 = new Grid(Grid.length, 0);
@@ -601,7 +653,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid2);
             grids.Add(grid3);
@@ -625,7 +677,10 @@ public void Init()
     class Chess19 : Chess
     {
         int No = 19;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(Grid.length, 0);
         Grid grid3 = new Grid(2 * Grid.length, 0);
@@ -634,7 +689,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid4);
             grids.Add(grid1);
             grids.Add(grid2);
@@ -658,7 +713,10 @@ public void Init()
     class Chess20 : Chess
     {
         int No = 20;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(0, Grid.length);
         Grid grid2 = new Grid(Grid.length, 0);
         Grid grid3 = new Grid(2 * Grid.length, 0);
@@ -667,7 +725,7 @@ public void Init()
         override
         public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid3);
             grids.Add(grid4);
@@ -691,7 +749,10 @@ public void Init()
     class Chess21 : Chess
     {
         int No = 21;
-        Grid anchor = new Grid();
+        public Grid getAnchor()
+        {
+            return this.anchor;
+        }
         Grid grid1 = new Grid(Grid.length, Grid.length);
         Grid grid2 = new Grid(Grid.length, 0);
         Grid grid3 = new Grid(Grid.length, -Grid.length);
@@ -700,7 +761,7 @@ public void Init()
         override
     public void Init()
         {
-            grids.Add(anchor);
+            grids.Add(getAnchor());
             grids.Add(grid1);
             grids.Add(grid3);
             grids.Add(grid4);
