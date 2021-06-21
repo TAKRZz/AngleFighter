@@ -16,10 +16,13 @@ namespace AngleFighter
 
         //Socket socketSend;
         Dictionary<string, Socket> dicSocket;
+
         Dictionary<string, MiniClient> dicClient;
 
-        MiniClient client1, client2, client3;
+        //MiniClient client1, client2, client3;
 
+        // 回合计数
+        int turnCount;
         const int Port = 23434;
         // 记录连接进来的client数量
         int ClientCount;
@@ -33,8 +36,10 @@ namespace AngleFighter
             IPAddress[] ip = Dns.GetHostAddresses(name);
             this.IP = ip[ip.Length - 1].ToString();
             ClientCount = 0;
+            turnCount = 0;
 
         }
+
 
         // 创建房间后
         // 接收消息  0连接信息  1 开始游戏  2 下棋  3 认输  4 交流  5 结束 6 委托
@@ -81,21 +86,23 @@ namespace AngleFighter
             {
                 Socket socketSend = socketWatch.Accept(); // 一直在等待连接
                 dicSocket.Add(socketSend.RemoteEndPoint.ToString(), socketSend);
-                if (ClientCount == 0)
-                {
-                    dicClient.Add(socketSend.RemoteEndPoint.ToString(), client1);
-                    client1.socket = socketSend;
-                }
-                if (ClientCount == 1)
-                {
-                    dicClient.Add(socketSend.RemoteEndPoint.ToString(), client2);
-                    client2.socket = socketSend;
-                }
-                if (ClientCount == 2)
-                {
-                    dicClient.Add(socketSend.RemoteEndPoint.ToString(), client3);
-                    client3.socket = socketSend;
-                }
+                //if (ClientCount == 0)
+                //{
+                //    dicClient.Add(socketSend.RemoteEndPoint.ToString(), new MiniClient(socketSend));
+                //    //client1.socket = socketSend;
+                //}
+                //if (ClientCount == 1)
+                //{
+                //    dicClient.Add(socketSend.RemoteEndPoint.ToString(), new MiniClient(soc);
+                //    client2.socket = socketSend;
+                //}
+                //if (ClientCount == 2)
+                //{
+                //    dicClient.Add(socketSend.RemoteEndPoint.ToString(), client3);
+                //    client3.socket = socketSend;
+                //}
+
+                dicClient.Add(socketSend.RemoteEndPoint.ToString(), new MiniClient(socketSend));
 
                 Thread th = new Thread(receive);
                 th.IsBackground = true;
@@ -104,6 +111,7 @@ namespace AngleFighter
                 ClientCount++;
                 sendHost(socketSend);
                 roomRefresh();
+
             }
         }
 
@@ -112,22 +120,42 @@ namespace AngleFighter
         public void receive(object o)
         {
             Socket socketSend = o as Socket;
+            
             // 关掉后死循环
             while (true)
             {
                 try
                 {
+                    // 接收消息 : 0连接信息  1 开始游戏  2 下棋  3 认输  4 交流  5 结束 
                     byte[] buffer = new byte[1024 * 128];
                     int r = socketSend.Receive(buffer);//接收的有效字节数
                     if (r == 0) break;
                     //showMessage(socketSend.RemoteEndPoint + " : " + str);
                     // 判断 连接 开始游戏 下棋 投降
-                    if (buffer[0] == '0')
+                    if (buffer[0] == 0)
                     {
                         string str = Encoding.UTF8.GetString(buffer, 1, r - 1);
-                        if (str[0] == '0') ;
+                        if (str[0] == '0')
+                        {
+                            dicClient[socketSend.RemoteEndPoint.ToString()].name = str.Substring(2);
+                        }
+                    }
+                    else if(buffer[0] == 1)
+                    {
+                        // 接收不到
 
                     }
+                    else if(buffer[0] == 2)
+                    {
+                        string str = Encoding.UTF8.GetString(buffer, 1, r - 1);
+                        
+                        Step step = new Step(str); // 缺少实现
+
+                        sendPlayChess(step);
+
+                    }
+
+
 
                 }
                 catch
@@ -142,8 +170,9 @@ namespace AngleFighter
         {
             try
             {  
+
                 // toString 方法
-                string str = "0 " + this.name;
+                string str = dicSocket.Count.ToString()+ " " + this.name;
                 byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
                 List<byte> list = new List<byte>();
                 // 加 0
@@ -162,10 +191,35 @@ namespace AngleFighter
             return;
         }
 
+        public void sendMessage(string str,Socket socket,byte n)
+        {
+            try
+            {
+                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
+                List<byte> list = new List<byte>();
+                list.Add(n);
+                list.AddRange(buffer);
+                byte[] newbuffer = list.ToArray();
+                socket.Send(newbuffer);
+            }
+            catch { }
+        }
+
         // 刷新房间信息
         public void roomRefresh()
         {
+            try
+            {
+                foreach (var i in dicClient.Values)
+                {
 
+                    foreach (var n in dicClient.Values)
+                    {
+                        sendMessage(n.ToString(), i.socket, 0);
+                    }
+                }
+            }
+            catch { }
         }
 
         // 开始下棋 首位为2
@@ -181,14 +235,17 @@ namespace AngleFighter
                 list.Add(2);
                 list.AddRange(buffer);
                 byte[] newBuffer = list.ToArray();
-                // 每一个都发送
-                //foreach (var i in dicSocket.Values)
-                //{
-                //    i.Send(newBuffer);
-                //}
-                client1.socket.Send(newBuffer);
-                client2.socket.Send(newBuffer);
-                client3.socket.Send(newBuffer);
+                
+                
+                //每一个都发送
+                foreach (var i in dicSocket.Values)
+                {
+                    i.Send(newBuffer);
+                }
+
+                //client1.socket.Send(newBuffer);
+                //client2.socket.Send(newBuffer);
+                //client3.socket.Send(newBuffer);
                 //string ip = cboUsers.SelectedItem.ToString();
                 //dicSocket[ip].Send(newBuffer);
                 //socketSend.Send(buffer);
@@ -215,12 +272,10 @@ namespace AngleFighter
                 list.AddRange(buffer);
                 byte[] newBuffer = list.ToArray();
                 // 每一个都发送
-                client1.socket.Send(newBuffer);
-                client2.socket.Send(newBuffer);
-                client3.socket.Send(newBuffer);
-                //string ip = cboUsers.SelectedItem.ToString();
-                //dicSocket[ip].Send(newBuffer);
-                //socketSend.Send(buffer);
+                foreach(var i in dicClient.Values)
+                {
+                    i.socket.Send(newBuffer);
+                }
 
             }
             catch { }
@@ -239,15 +294,11 @@ namespace AngleFighter
                 list.AddRange(buffer);
                 byte[] newBuffer = list.ToArray();
                 // 每一个都发送
-
-                client1.socket.Send(newBuffer);
-                client2.socket.Send(newBuffer);
-                client3.socket.Send(newBuffer);
-
-                //string ip = cboUsers.SelectedItem.ToString();
-                //dicSocket[ip].Send(newBuffer);
-                //socketSend.Send(buffer);
-
+                foreach (var i in dicClient.Values)
+                {
+                    i.socket.Send(newBuffer);
+                }
+               
             }
             catch { }
 

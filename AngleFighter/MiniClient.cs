@@ -13,11 +13,18 @@ namespace AngleFighter
         public string name;
         public Socket socket;
 
-        MiniClient()
+        public MiniClient()
         {
+            color = 0;
             name = null;
             socket = null;
+        }
 
+        public MiniClient(Socket socket)
+        {
+            this.socket = socket;
+            name = null;
+            color = 0;
         }
         public override string ToString()
         {

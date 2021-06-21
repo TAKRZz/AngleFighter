@@ -18,6 +18,7 @@ namespace AngleFighter
             name = null;
             socket = null;
         }
+
         public override string ToString()
         {
             return color.ToString() + " " + name;

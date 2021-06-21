@@ -38,6 +38,8 @@ namespace AngleFighter
             Step step = new Step(chess, 0);
 
             sendPlayChess(step);//发送网络信息
+
+            waiting();  // 将下棋等按钮置为灰色 
             chesses.Remove(chess);//将棋子从剩余棋子当中移除
         }
 
@@ -55,6 +57,14 @@ namespace AngleFighter
         }
 
 
+        //在棋盘显示一步棋
+        public void addStep(Step step);
+
+        //等待下棋
+        public void waiting();
+
+        //开始下棋
+        public void playing();
 
     }
 }

@@ -128,7 +128,7 @@ namespace AngleFighter
                 }
             }
 
-            for (int i = 0; i < chess.num; i++)
+            for (int i = 0; i < chess.count; i++)
             {
                 return AngleCheck(chess.grids[i]);
             }

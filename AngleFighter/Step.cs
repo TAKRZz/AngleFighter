@@ -8,18 +8,24 @@ namespace AngleFighter
 {
     class Step
     {
-        private Chess chess;
-        private int order;
-
+        public Chess chess;
+        public int order;
+        public int color;
         public Step(Chess chess,int order)
         {
             this.chess = chess;
             this.order = order;
+            this.color = chess.color;
         }
 
         public override string ToString()
         {
             return chess.ToString() + order;
+        }
+        
+        public Step(string str)
+        {
+            // 缺一个实现
         }
     }
 }
