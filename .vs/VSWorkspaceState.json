@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AngleFighter"
   ],
+  "SelectedNode": "\\AngleFighter\\Player.cs",
   "PreviewInSolutionExplorer": false
 }

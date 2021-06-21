@@ -1,0 +1,13 @@
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.csprojAssemblyReference.cache
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.BeginForm.resources
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.GameForm.resources
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.Properties.Resources.resources
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.RoomForm1.resources
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.RoomForm2.resources
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.RoomIPForm.resources
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.RoomSelect.resources
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.SetForm.resources
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.csproj.GenerateResource.cache
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.csproj.CoreCompileInputs.cache
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.exe
+D:\Files\Git\AngleFighter\AngleFighter\obj\Debug\AngleFighter.pdb

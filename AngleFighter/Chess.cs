@@ -15,8 +15,10 @@ namespace AngleFighter
         private int No;
 
         //用来记录位于边角的格子的个数
-        private int count;
+        public int count;
 
+        // 记录格子的颜色
+        public int color;
         
         //棋子方向，用于旋转棋子
         int direction;
@@ -37,6 +39,7 @@ namespace AngleFighter
         //为棋子设置颜色
         public void initColor(int x)
         {
+            this.color = x;
             for (int i = 0; i < grids.Count; i++)
             {
                 grids[i].SetColor(x);
