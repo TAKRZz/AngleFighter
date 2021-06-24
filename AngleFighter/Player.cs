@@ -8,12 +8,12 @@ namespace AngleFighter
 {
     abstract class Player
     {
-
+        //游戏玩家得分
+        int score;
 
         //颜色，进入房间时，系统分配
         public int color;
 
-        
         //每个玩家拥有一个棋盘
         private Pane pane;
 
@@ -27,17 +27,15 @@ namespace AngleFighter
 
         public string name;
 
-        public abstract void sendPlayChess(Step step);
+        public abstract void sendPlayChess(Chess chess);
 
         //根据棋子编号进行选择棋子，利用棋盘的接口进行下棋
-        public void PlayChess(int chessNo)
+        public void PlayChess(Chess chess)
         {
-            Chess chess = ChooseChess(chessNo);
+           
             pane.PlayChess(chess);//下棋
 
-            Step step = new Step(chess, 0);
-
-            sendPlayChess(step);//发送网络信息
+            sendPlayChess(chess);//发送网络信息
 
             waiting();  // 将下棋等按钮置为灰色 
             chesses.Remove(chess);//将棋子从剩余棋子当中移除
@@ -58,13 +56,41 @@ namespace AngleFighter
 
 
         //在棋盘显示一步棋
-        public void addStep(Step step);
+        public abstract void addStep(Step step);
 
         //等待下棋
-        public void waiting();
+        public abstract void waiting();
 
         //开始下棋
-        public void playing();
+        public abstract void playing();
 
+        //来自网络的下棋
+        public void othersPlay(string chessStr)
+        {
+            pane.PlayChess(TransferToChess(chessStr));
+        }
+
+        //根据字符串转换成chess
+        public Chess TransferToChess(string chessStr)
+        {
+            string[] array = chessStr.Split(' ');
+            int x = Convert.ToInt32(array[0]);
+            int y = Convert.ToInt32(array[1]);
+            int color = Convert.ToInt32(array[2]);
+            int direction = Convert.ToInt32(array[3]);
+            int No = Convert.ToInt32(array[4]);
+
+            Chess chess = Chess.GetChess(No);
+            chess.anchor.SetX(x);
+            chess.anchor.SetY(y);
+            chess.anchor.SetColor(color);
+
+            for (int count = 0; count < direction; count++)
+            {
+                chess.Rotate();
+            }
+
+            return chess;
+        }
     }
 }

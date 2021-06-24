@@ -57,7 +57,7 @@ namespace AngleFighter
         //棋子的ToString方法
         public override string ToString()
         {
-            return anchor.ToString() + direction + No;
+            return anchor.ToString() + direction+ " "  + No ;
         }
 
         //提供棋子编号的查询
@@ -66,23 +66,45 @@ namespace AngleFighter
             return No;
         }
 
+        public void SetNo(int no)
+        {
+            No = no;
+        }
         
+        //根据棋子编号得到相应的棋子类
+        public static Chess GetChess(int no)
+        {
+            switch (no)
+            {
+                case 1:
+                    return new Chess01();
+                    break;
+                case 2:
+                    return new Chess02();
+                    break;
+
+                default:
+                    return null;
+            }
+        }
     }
+
     //通过给anchor坐标赋值来确定棋子在棋盘上的位置，其他grid记录与anchor的相对位置来组成棋子
     //棋子一
     class Chess01 : Chess
     {
-        int No = 1;
-        public Grid getAnchor()
+        public Chess01()
         {
-            return this.anchor;
+            base.SetNo(1);
         }
+
         int count = 1;
-        override
-            public void Init()
+
+        override public void Init()
         {
-            grids.Add(getAnchor());
+            grids.Add(base.anchor);
         }
+
         //不需要旋转
         override
         public void Rotate()
@@ -96,13 +118,13 @@ namespace AngleFighter
         {
             return this.anchor;
         }
-        Grid grid = new Grid(0, Grid.length);
+
         int count = 2;
         override
         public void Init()
         {
             grids.Add(getAnchor());
-            grids.Add(grid);
+            grids.Add(new Grid(0, Grid.length));
         }
         override
         public void Rotate()
@@ -126,15 +148,13 @@ namespace AngleFighter
         {
             return this.anchor;
         }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(0, 2 * Grid.length);
-        int count = 2;
+                int count = 2;
+
         override
     public void Init()
         {
             grids.Add(getAnchor());
-            grids.Add(grid2);
-            grids.Add(grid1);
+            grids.Add(new Grid(base.anchor.GetX()+Grid.length, base.anchor.GetY()));
         }
         override
         public void Rotate()
@@ -195,7 +215,7 @@ namespace AngleFighter
         Grid grid3 = new Grid(0, 3 * Grid.length);
         int count = 2;
         override
-public void Init()
+        public void Init()
         {
             grids.Add(getAnchor());
             grids.Add(grid3);

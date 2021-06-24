@@ -36,6 +36,7 @@ namespace AngleFighter
         private void BackBtn_Click(object sender, EventArgs e)
         {
             Hide();
+
             RoomSelect rm = new RoomSelect();
 
             rm.ShowDialog();

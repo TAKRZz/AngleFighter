@@ -148,11 +148,16 @@ namespace AngleFighter
                     else if(buffer[0] == 2)
                     {
                         string str = Encoding.UTF8.GetString(buffer, 1, r - 1);
-                        
-                        Step step = new Step(str); // 缺少实现
 
-                        sendPlayChess(step);
+                        // 缺少实现
+                        othersPlay(str);
 
+                        sendPlayChess(TransferToChess(str));
+
+                        if (TransferToChess(str).color == 4)
+                        {
+                            playing();
+                        }
                     }
 
 
@@ -258,13 +263,12 @@ namespace AngleFighter
 
         // 发送信息 正常下棋 首位为3
         override
-        public void sendPlayChess(Step step)
+        public void sendPlayChess(Chess chess)
         {
-
             try
             {
                 // toString 方法
-                string str = step.ToString();
+                string str = chess.ToString();
                 byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
                 List<byte> list = new List<byte>();
                 // 正常下棋 加 3
@@ -304,5 +308,19 @@ namespace AngleFighter
 
         }
 
+        public override void addStep(Step step)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void waiting()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void playing()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -22,10 +22,6 @@ namespace AngleFighter
         {
             return chess.ToString() + order;
         }
-        
-        public Step(string str)
-        {
-            // 缺一个实现
-        }
+    
     }
 }

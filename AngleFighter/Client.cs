@@ -132,14 +132,12 @@ namespace AngleFighter
                         // 下棋
                         // 显示
                         string str = Encoding.UTF8.GetString(buffer, 1, r - 1);
-                        Step step = new Step(str);
-                        
-                        addStep(step);
+                        othersPlay(str);
 
                         // 轮到你下棋
-                        if(step.color == this.color - 1)//这个判断条件还需要优化 如果有人投降
+                        if (TransferToChess(str).color + 1 == this.color)//这个判断条件还需要优化 如果有人投降
                         {
-                            Playing();
+                            playing();
                         }
 
                     }
@@ -168,12 +166,12 @@ namespace AngleFighter
 
         // 下棋 
         override
-        public void sendPlayChess(Step step)
+        public void sendPlayChess(Chess chess)
         {
             try
             {
                 // str 下棋的string信息
-                string str = step.ToString();
+                string str = chess.ToString();
                 byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
 
                 socketSend.Send(buffer);
@@ -207,5 +205,19 @@ namespace AngleFighter
             }
         }
 
+        public override void addStep(Step step)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void waiting()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void playing()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -29,10 +29,12 @@ namespace AngleFighter
             // BeginBtn.BackgroudImage = "BeginBtn.png";
             //BeginBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             //BeginBtn.Location = new System.Drawing.Point(800,400);
+            
             Hide();
             RoomSelect rooms = new RoomSelect();
 
             rooms.ShowDialog();
+            
             this.Close();
 
         }

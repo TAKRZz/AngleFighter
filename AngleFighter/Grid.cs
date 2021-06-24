@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AngleFighter
 {
     //格子类，用于表示棋子和棋盘的简单结构
-    class Grid
+    public class Grid
     {
         //横纵坐标
         private int x;
@@ -80,7 +80,7 @@ namespace AngleFighter
 
         public override string ToString()
         {
-            return Convert.ToString(this.x) + Convert.ToString(this.y) + Convert.ToString(this.color);
+            return Convert.ToString(this.x) +" "+ Convert.ToString(this.y)+" " + Convert.ToString(this.color)+" ";
         }
     }
 }
