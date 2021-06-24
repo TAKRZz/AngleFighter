@@ -43,12 +43,13 @@ namespace AngleFighter
             this.BeginBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.BeginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BeginBtn.Location = new System.Drawing.Point(422, 665);
-            this.BeginBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BeginBtn.Margin = new System.Windows.Forms.Padding(2);
             this.BeginBtn.Name = "BeginBtn";
             this.BeginBtn.Size = new System.Drawing.Size(635, 225);
             this.BeginBtn.TabIndex = 0;
             this.BeginBtn.UseVisualStyleBackColor = false;
             this.BeginBtn.Click += new System.EventHandler(this.BeginBtn_Click);
+            this.BeginBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BeginBtn_MouseDown);
             // 
             // setBtn
             // 
@@ -61,7 +62,7 @@ namespace AngleFighter
             this.setBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.setBtn.ForeColor = System.Drawing.Color.Transparent;
             this.setBtn.Location = new System.Drawing.Point(1269, 11);
-            this.setBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.setBtn.Margin = new System.Windows.Forms.Padding(2);
             this.setBtn.Name = "setBtn";
             this.setBtn.Size = new System.Drawing.Size(120, 120);
             this.setBtn.TabIndex = 1;

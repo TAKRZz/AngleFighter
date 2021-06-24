@@ -41,5 +41,15 @@ namespace AngleFighter
             rm.ShowDialog();
             this.Close();
         }
+
+        private void Enter_MouseDown(object sender, MouseEventArgs e)
+        {
+            Enter.BackgroundImage = global::AngleFighter.Properties.Resources.EnterBtn2;
+        }
+
+        private void backBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            backBtn.BackgroundImage = global::AngleFighter.Properties.Resources.BeginBtn2;
+        }
     }
 }

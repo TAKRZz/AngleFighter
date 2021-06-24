@@ -39,5 +39,10 @@ namespace AngleFighter
 
             srm.ShowDialog();
         }
+
+        private void backBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            backBtn.BackgroundImage = global::AngleFighter.Properties.Resources.RoomBackBtn2;
+        }
     }
 }

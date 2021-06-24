@@ -38,3 +38,4 @@ D:\c#HW\C#AngleFighter\AngleFighter\AngleFighter\bin\Debug\es\DevExpress.Xpo.v19
 D:\c#HW\C#AngleFighter\AngleFighter\AngleFighter\bin\Debug\ja\DevExpress.Xpo.v19.2.resources.dll
 D:\c#HW\C#AngleFighter\AngleFighter\AngleFighter\bin\Debug\ru\DevExpress.Xpo.v19.2.resources.dll
 D:\c#HW\C#AngleFighter\AngleFighter\AngleFighter\obj\Debug\AngleFighter.csproj.CopyComplete
+D:\c#HW\C#AngleFighter\AngleFighter\AngleFighter\obj\Debug\AngleFighter.GameOver.resources

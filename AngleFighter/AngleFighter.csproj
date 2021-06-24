@@ -49,6 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chess.cs" />
+    <Compile Include="GameOver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameOver.Designer.cs">
+      <DependentUpon>GameOver.cs</DependentUpon>
+    </Compile>
     <Compile Include="MiniClient.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Host.cs" />
@@ -107,6 +113,9 @@
     <EmbeddedResource Include="GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GameOver.resx">
+      <DependentUpon>GameOver.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -163,6 +172,23 @@
     <None Include="bin\Debug\RoomBeginBtn.png" />
     <None Include="bin\Debug\Room.png" />
     <None Include="bin\Debug\EnterBtn.png" />
+    <None Include="Resources\HistoryOfGameBtn2.png" />
+    <None Include="Resources\JoinRoomBtn2.png" />
+    <None Include="Resources\EnterBtn2.png" />
+    <None Include="Resources\BackBtn2.png" />
+    <None Include="Resources\CreatRoomBtn2.png" />
+    <None Include="Resources\BeginBtn2.png" />
+    <None Include="Resources\GameOverBackground.png" />
+    <None Include="Resources\Round2.png" />
+    <None Include="Resources\Round.png" />
+    <None Include="Resources\Confirm2.png" />
+    <None Include="Resources\Confirm.png" />
+    <None Include="Resources\RoomBackBtn2.png" />
+    <None Include="Resources\RoomBeginBtn2.png" />
+    <None Include="Resources\BackToHome2.png" />
+    <None Include="Resources\BackToHome.png" />
+    <None Include="Resources\Surrender2.png" />
+    <None Include="Resources\Surrender.png" />
     <Content Include="名称.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -29,7 +29,7 @@ namespace AngleFighter
             // BeginBtn.BackgroudImage = "BeginBtn.png";
             //BeginBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             //BeginBtn.Location = new System.Drawing.Point(800,400);
-            Hide();
+            this.Hide();
             RoomSelect rooms = new RoomSelect();
 
             rooms.ShowDialog();
@@ -54,6 +54,11 @@ namespace AngleFighter
 
             srm.ShowDialog();
             
+        }
+
+        private void BeginBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            BeginBtn.BackgroundImage = global::AngleFighter.Properties.Resources.BeginBtn2;
         }
     }
 }
