@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 namespace AngleFighter
-{
+{       
     //抽象棋子，用于各种棋子的统一模板
     public abstract class Chess
     {
@@ -15,7 +15,7 @@ namespace AngleFighter
         private int No;
 
         //用来记录位于边角的格子的个数
-        public int count;
+        private int count;
 
         // 记录格子的颜色
         public int color;
@@ -49,7 +49,7 @@ namespace AngleFighter
         //旋转棋子
         public abstract void Rotate();
         //通过锚点初始化棋子在棋盘上的位置
-        public void initPosition(int x, int y)
+        public void initPosition(int x, int y)·
         {
             anchor.SetX(x);
             anchor.SetY(y);
@@ -65,710 +65,571 @@ namespace AngleFighter
         {
             return No;
         }
-
-        
+        public void SetNo(int no)
+    {
+        this.No = no;
     }
+    public int GetCount()
+    {
+        return count;
+    }
+    public void SetCount(int c)
+    {
+        this.count = c;
+    }
+
+
+}
     //通过给anchor坐标赋值来确定棋子在棋盘上的位置，其他grid记录与anchor的相对位置来组成棋子
     //棋子一
     class Chess01 : Chess
     {
-        int No = 1;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        int count = 1;
         override
             public void Init()
         {
-            grids.Add(getAnchor());
+        base.SetNo(1);
+        base.SetCount(1);
+        grids.Add(base.anchor);
         }
         //不需要旋转
         override
         public void Rotate()
         { }
     }
-    //棋子二
-    class Chess02 : Chess
+//棋子二
+class Chess02 : Chess
+{
+    override
+    public void Init()
     {
-        int No = 2;
-        public Grid getAnchor()
+        base.SetNo(2);
+        base.SetCount(2);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+    }
+    override
+    public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
         {
-            return this.anchor;
-        }
-        Grid grid = new Grid(0, Grid.length);
-        int count = 2;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid);
-        }
-        override
-        public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
         }
     }
+}
 
-    //棋子三
-    class Chess03 : Chess
+//棋子三
+class Chess03 : Chess
+{
+    override
+public void Init()
     {
-        int No = 3;
-        public Grid getAnchor()
+        base.SetNo(3);
+        base.SetCount(2);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+    }
+    override
+    public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
         {
-            return this.anchor;
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
         }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(0, 2 * Grid.length);
-        int count = 2;
+
+    }
+}
+//棋子四
+class Chess04 : Chess
+{
+    override
+public void Init()
+    {
+        base.SetNo(4);
+        base.SetCount(3);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + Grid.length));
+    }
+    override
+    public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子五
+class Chess05 : Chess
+{
+    override
+public void Init()
+    {
+        base.SetNo(5);
+        base.SetCount(2);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 3 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 2 * Grid.length));
+    }
+    override
+    public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子六
+class Chess06 : Chess
+{
+    override
+public void Init()
+    {
+        base.SetNo(6);
+        base.SetCount(3);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + Grid.length));
+    }
+    override
+    public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子七
+class Chess07 : Chess
+{
+    override
+public void Init()
+    {
+        base.SetNo(7);
+        base.SetCount(3);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 2 * Grid.length));
+    }
+    override
+    public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子八
+class Chess08 : Chess
+{
+    override
+public void Init()
+    {
+        base.SetNo(8);
+        base.SetCount(4);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + Grid.length));
+    }
+    override
+    public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子九
+class Chess09 : Chess
+{
+    override
+public void Init()
+    {
+        base.SetNo(9);
+        base.SetCount(4);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() - Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + 2 * Grid.length, base.anchor.GetY() -Grid.length));
+    }
+    override
+    public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子十
+class Chess10 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(10);
+        base.SetCount(2);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 4 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 3 * Grid.length));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子十一
+class Chess11 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(11);
+        base.SetCount(3);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 3 * Grid.length));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子十二
+class Chess12 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(12);
+        base.SetCount(4);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + 3 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + 2 * Grid.length));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子十三
+class Chess13 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(13);
+        base.SetCount(4);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + Grid.length));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子十四
+class Chess14 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(14);
+        base.SetCount(4);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + Grid.length));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子十五
+class Chess15 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(15);
+        base.SetCount(3);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 3 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 2 * Grid.length));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子十六
+class Chess16 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(16);
+        base.SetCount(3);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + 2 * Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() + Grid.length));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子十七
+class Chess17 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(17);
+        base.SetCount(3);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + 2 * Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + 2 * Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+
+//棋子十八
+class Chess18 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(18);
+        base.SetCount(5);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX() - Grid.length, base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() - Grid.length));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子十九
+class Chess19 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(19);
+        base.SetCount(2);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX() + 2 * Grid.length, base.anchor.GetY() - Grid.length));
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX() + 2 * Grid.length, base.anchor.GetY()));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子二十
+class Chess20 : Chess
+{
+    override
+    public void Init()
+    {
+        base.SetNo(20);
+        base.SetCount(4);
+        grids.Add(base.anchor);
+        grids.Add(new Grid(base.anchor.GetX(), base.anchor.GetY() + Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + 2 * Grid.length, base.anchor.GetY()));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY() - Grid.length));
+        grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
+    }
+    override
+        public void Rotate()
+    {
+        //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
+        for (int i = 0; i < grids.Count; i++)
+        {
+            int x1 = -grids[i].GetX();
+            int y1 = grids[i].GetY();
+            grids[i].SetX(x1);
+            grids[i].SetY(y1);
+        }
+
+    }
+}
+//棋子二十一
+class Chess21 : Chess
+    {
         override
     public void Init()
         {
-            grids.Add(getAnchor());
-            grids.Add(grid2);
-            grids.Add(grid1);
-        }
-        override
-        public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子四
-    class Chess04 : Chess
-    {
-        int No = 4;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(Grid.length, Grid.length);
-        int count = 3;
-        override
-    public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid2);
-        }
-        override
-        public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子五
-    class Chess05 : Chess
-    {
-        int No = 5;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(0, 2 * Grid.length);
-        Grid grid3 = new Grid(0, 3 * Grid.length);
-        int count = 2;
-        override
-public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid3);
-            grids.Add(grid1);
-            grids.Add(grid2);
-        }
-        override
-        public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子六
-    class Chess06 : Chess
-    {
-        int No = 6;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(Grid.length, 0);
-        Grid grid2 = new Grid(Grid.length, Grid.length);
-        Grid grid3 = new Grid(Grid.length, 2 * Grid.length);
-        int count = 3;
-        override
-public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid3);
-            grids.Add(grid2);
-        }
-        override
-        public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子七
-    class Chess07 : Chess
-    {
-        int No = 7;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(0, 2 * Grid.length);
-        Grid grid3 = new Grid(Grid.length, Grid.length);
-        int count = 3;
-        override
-public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid2);
-            grids.Add(grid3);
-            grids.Add(grid2);
-        }
-        override
-        public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子八
-    class Chess08 : Chess
-    {
-        int No = 8;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(Grid.length, 0);
-        Grid grid3 = new Grid(Grid.length, Grid.length);
-        int count = 4;
-        override
-public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid2);
-            grids.Add(grid3);
-        }
-        override
-        public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子九
-    class Chess09 : Chess
-    {
-        int No = 9;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(Grid.length, 0);
-        Grid grid2 = new Grid(Grid.length, -Grid.length);
-        Grid grid3 = new Grid(2 * Grid.length, -Grid.length);
-        int count = 4;
-        override
-public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid2);
-            grids.Add(grid3);
-        }
-        override
-        public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子十
-    class Chess10 : Chess
-    {
-        int No = 10;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(0, 2 * Grid.length);
-        Grid grid3 = new Grid(0, 3 * Grid.length);
-        Grid grid4 = new Grid(0, 4 * Grid.length);
-        int count = 2;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid4);
-            grids.Add(grid1);
-            grids.Add(grid2);
-            grids.Add(grid3);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子十一
-    class Chess11 : Chess
-    {
-        int No = 11;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(Grid.length, 0);
-        Grid grid2 = new Grid(0, Grid.length);
-        Grid grid3 = new Grid(0, 2 * Grid.length);
-        Grid grid4 = new Grid(0, 3 * Grid.length);
-        int count = 3;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid2);
-            grids.Add(grid3);
-            grids.Add(grid4);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子十二
-    class Chess12 : Chess
-    {
-        int No = 12;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(Grid.length, Grid.length);
-        Grid grid3 = new Grid(Grid.length, 2 * Grid.length);
-        Grid grid4 = new Grid(Grid.length, 3 * Grid.length);
-        int count = 4;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid2);
-            grids.Add(grid4);
-            grids.Add(grid3);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子十三
-    class Chess13 : Chess
-    {
-        int No = 13;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(Grid.length, 0);
-        Grid grid3 = new Grid(Grid.length, Grid.length);
-        Grid grid4 = new Grid(Grid.length, 2 * Grid.length);
-        int count = 4;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid2);
-            grids.Add(grid4);
-            grids.Add(grid3);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子十四
-    class Chess14 : Chess
-    {
-        int No = 14;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, 2 * Grid.length);
-        Grid grid2 = new Grid(Grid.length, 0);
-        Grid grid3 = new Grid(Grid.length, Grid.length);
-        Grid grid4 = new Grid(Grid.length, 2 * Grid.length);
-        int count = 4;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid2);
-            grids.Add(grid4);
-            grids.Add(grid3);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子十五
-    class Chess15 : Chess
-    {
-        int No = 15;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(0, 2 * Grid.length);
-        Grid grid3 = new Grid(0, 3 * Grid.length);
-        Grid grid4 = new Grid(Grid.length, 2 * Grid.length);
-        int count = 3;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid3);
-            grids.Add(grid4);
-            grids.Add(grid1);
-            grids.Add(grid2);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子十六
-    class Chess16 : Chess
-    {
-        int No = 16;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(Grid.length, 0);
-        Grid grid2 = new Grid(Grid.length, Grid.length);
-        Grid grid3 = new Grid(Grid.length, 2 * Grid.length);
-        Grid grid4 = new Grid(2 * Grid.length, 0);
-        int count = 3;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid3);
-            grids.Add(grid4);
-            grids.Add(grid1);
-            grids.Add(grid2);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子十七
-    class Chess17 : Chess
-    {
-        int No = 17;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(0, 2 * Grid.length);
-        Grid grid3 = new Grid(Grid.length, 0);
-        Grid grid4 = new Grid(2 * Grid.length, 0);
-        int count = 3;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid2);
-            grids.Add(grid4);
-            grids.Add(grid1);
-            grids.Add(grid3);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子十八
-    class Chess18 : Chess
-    {
-        int No = 18;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(-Grid.length, Grid.length);
-        Grid grid2 = new Grid(0, Grid.length);
-        Grid grid3 = new Grid(Grid.length, 0);
-        Grid grid4 = new Grid(Grid.length, -Grid.length);
-        int count = 5;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid2);
-            grids.Add(grid3);
-            grids.Add(grid4);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子十九
-    class Chess19 : Chess
-    {
-        int No = 19;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(Grid.length, 0);
-        Grid grid3 = new Grid(2 * Grid.length, 0);
-        Grid grid4 = new Grid(2 * Grid.length, -Grid.length);
-        int count = 2;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid4);
-            grids.Add(grid1);
-            grids.Add(grid2);
-            grids.Add(grid3);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子二十
-    class Chess20 : Chess
-    {
-        int No = 20;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(0, Grid.length);
-        Grid grid2 = new Grid(Grid.length, 0);
-        Grid grid3 = new Grid(2 * Grid.length, 0);
-        Grid grid4 = new Grid(Grid.length, -Grid.length);
-        int count = 4;
-        override
-        public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid3);
-            grids.Add(grid4);
-            grids.Add(grid2);
-        }
-        override
-            public void Rotate()
-        {
-            //每个grid的坐标都乘一个旋转矩阵，且每次旋转度数为90度
-            for (int i = 0; i < grids.Count; i++)
-            {
-                int x1 = -grids[i].GetX();
-                int y1 = grids[i].GetY();
-                grids[i].SetX(x1);
-                grids[i].SetY(y1);
-            }
-
-        }
-    }
-    //棋子二十一
-    class Chess21 : Chess
-    {
-        int No = 21;
-        public Grid getAnchor()
-        {
-            return this.anchor;
-        }
-        Grid grid1 = new Grid(Grid.length, Grid.length);
-        Grid grid2 = new Grid(Grid.length, 0);
-        Grid grid3 = new Grid(Grid.length, -Grid.length);
-        Grid grid4 = new Grid(2 * Grid.length, 0);
-        int count = 4;
-        override
-    public void Init()
-        {
-            grids.Add(getAnchor());
-            grids.Add(grid1);
-            grids.Add(grid3);
-            grids.Add(grid4);
-            grids.Add(grid2);
+        base.SetNo(21);
+        base.SetCount(4);
+        grids.Add(base.anchor));
+            grids.Add(new Grid(base.anchor.GetX()+Grid.length, base.anchor.GetY()+Grid.length));
+            grids.Add(new Grid(base.anchir.GetX()+Grid.length, base.anchor.GetY()-Grid.length));
+            grids.Add(new Grid(base.anchor.GetX() + 2 * Grid.length, base.anchor.GetY()));
+            grids.Add(new Grid(base.anchor.GetX() + Grid.length, base.anchor.GetY()));
         }
         //无需旋转
         override

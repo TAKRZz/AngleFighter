@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AngleFighter
 {
     //格子类，用于表示棋子和棋盘的简单结构
-    class Grid
+   public class Grid
     {
         //横纵坐标
         private int x;
