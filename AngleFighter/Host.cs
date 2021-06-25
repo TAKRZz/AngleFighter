@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace AngleFighter
 {
 
-    class Host : Player
+    public class Host : Player
     {
 
         //Socket socketSend;
@@ -24,23 +24,32 @@ namespace AngleFighter
         // 回合计数
         int turnCount;
         const int Port = 23434;
+
         // 记录连接进来的client数量
         int ClientCount;
+
+
         public Host()
         {
+
             this.color = 1;
+            this.score = 0;
             dicSocket = new Dictionary<string, Socket>();
             dicClient = new Dictionary<string, MiniClient>();
             Control.CheckForIllegalCrossThreadCalls = false;
             string name = Dns.GetHostName();
             IPAddress[] ip = Dns.GetHostAddresses(name);
             this.IP = ip[ip.Length - 1].ToString();
+
+
             ClientCount = 0;
             turnCount = 0;
 
+
         }
 
-
+        public RoomForm1 roomForm1;
+        public GameForm gameForm;
         // 创建房间后
         // 接收消息  0连接信息  1 开始游戏  2 下棋  3 认输  4 交流  5 结束 6 委托
 
@@ -60,9 +69,10 @@ namespace AngleFighter
                 socketWatch.Bind(point);
 
                 //设置监听队列
-                socketWatch.Listen(3);
+                socketWatch.Listen(10);
                 //在某一个时间点内，能连接server的最大client数量
                 //等待连接、创建通信socket
+
                 Thread thread = new Thread(listen);
                 thread.IsBackground = true;
                 thread.Start(socketWatch);
@@ -70,11 +80,8 @@ namespace AngleFighter
             }
             catch
             {
-
             }
-
         }
-
 
         // 开始监听
         public void listen(object o)
@@ -86,21 +93,6 @@ namespace AngleFighter
             {
                 Socket socketSend = socketWatch.Accept(); // 一直在等待连接
                 dicSocket.Add(socketSend.RemoteEndPoint.ToString(), socketSend);
-                //if (ClientCount == 0)
-                //{
-                //    dicClient.Add(socketSend.RemoteEndPoint.ToString(), new MiniClient(socketSend));
-                //    //client1.socket = socketSend;
-                //}
-                //if (ClientCount == 1)
-                //{
-                //    dicClient.Add(socketSend.RemoteEndPoint.ToString(), new MiniClient(soc);
-                //    client2.socket = socketSend;
-                //}
-                //if (ClientCount == 2)
-                //{
-                //    dicClient.Add(socketSend.RemoteEndPoint.ToString(), client3);
-                //    client3.socket = socketSend;
-                //}
 
                 dicClient.Add(socketSend.RemoteEndPoint.ToString(), new MiniClient(socketSend));
 
@@ -109,10 +101,22 @@ namespace AngleFighter
                 th.Start(socketSend);
 
                 ClientCount++;
-                sendHost(socketSend);
-                roomRefresh();
+
+
+                List<byte> list = new List<byte>();
+                // 开始下棋 加 1
+                list.Add(1);
+                byte[] newBuffer = list.ToArray();
+                socketSend.Send(newBuffer);
+
+                //sendHost(socketSend);
+                //roomRefresh();
+
 
             }
+
+            roomForm1.bgBtn.Enabled = true;
+
         }
 
         // 接受信息
@@ -138,12 +142,23 @@ namespace AngleFighter
                         if (str[0] == '0')
                         {
                             dicClient[socketSend.RemoteEndPoint.ToString()].name = str.Substring(2);
+                            if (dicSocket.Count == 1) 
+                            {
+                                this.roomForm1.Client1_name_txt.Text = str.Substring(2);
+                            }
+                            if (dicSocket.Count == 2)
+                            {
+                                this.roomForm1.Client2_name_txt.Text = str.Substring(2);
+                            }
+                            if (dicSocket.Count == 3)
+                            {
+                                this.roomForm1.Client3_name_txt.Text = str.Substring(2);
+                            }
                         }
                     }
                     else if(buffer[0] == 1)
                     {
                         // 接收不到
-
                     }
                     else if(buffer[0] == 2)
                     {
@@ -159,7 +174,15 @@ namespace AngleFighter
                             playing();
                         }
                     }
-
+                    // 接收消息 : 0连接信息  1 开始游戏  2 下棋  3 认输  4 交流  5 结束 
+                    else if (buffer[0] == 3)
+                    {
+                        foreach(var i in dicSocket.Values)
+                        {
+                            
+                        }
+                    }
+                    
 
 
                 }
@@ -175,7 +198,6 @@ namespace AngleFighter
         {
             try
             {  
-
                 // toString 方法
                 string str = dicSocket.Count.ToString()+ " " + this.name;
                 byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
@@ -185,7 +207,6 @@ namespace AngleFighter
                 list.AddRange(buffer);
                 byte[] newBuffer = list.ToArray();
                 socket.Send(newBuffer);
-
 
             }
             catch
@@ -227,7 +248,7 @@ namespace AngleFighter
             catch { }
         }
 
-        // 开始下棋 首位为2
+        // 开始下棋 首位为1
         public void sendStartGame()
         {
             try
@@ -236,12 +257,12 @@ namespace AngleFighter
                 string str = null;
                 byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
                 List<byte> list = new List<byte>();
-                // 开始下棋 加 2
-                list.Add(2);
+                // 开始下棋 加 1
+                list.Add(1);
                 list.AddRange(buffer);
                 byte[] newBuffer = list.ToArray();
-                
-                
+
+
                 //每一个都发送
                 foreach (var i in dicSocket.Values)
                 {
@@ -308,10 +329,7 @@ namespace AngleFighter
 
         }
 
-        public override void addStep(Step step)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public override void waiting()
         {

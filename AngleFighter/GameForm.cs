@@ -17,10 +17,13 @@ namespace AngleFighter
             InitializeComponent();
         }
 
+        public Player player;
+        public RoomForm1 roomForm1;
+        public RoomForm2 roomForm2;
+
         private void GameForm_Load(object sender, EventArgs e)
         {
-            this.Width = 944;
-            this.Height = 656;
+
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
     }

@@ -23,13 +23,13 @@ namespace AngleFighter
             this.Height = 656;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
+        public RoomSelect roomSelect;
 
         private void backBtn_Click(object sender, EventArgs e)
         {
             Hide();
-            RoomSelect rm = new RoomSelect();
 
-            rm.ShowDialog();
+            roomSelect.Show();
             this.Close();
         }
 
@@ -38,6 +38,11 @@ namespace AngleFighter
             SetForm srm = new SetForm();
 
             srm.ShowDialog();
+        }
+
+        private void HostName_txt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -31,6 +31,7 @@ namespace AngleFighter
         {
             this.Enter = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
+            this.IPAddress_txt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Enter
@@ -42,9 +43,10 @@ namespace AngleFighter
             this.Enter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.Enter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Enter.Location = new System.Drawing.Point(540, 432);
+            this.Enter.Location = new System.Drawing.Point(360, 288);
+            this.Enter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Enter.Name = "Enter";
-            this.Enter.Size = new System.Drawing.Size(329, 118);
+            this.Enter.Size = new System.Drawing.Size(219, 79);
             this.Enter.TabIndex = 0;
             this.Enter.UseVisualStyleBackColor = false;
             this.Enter.Click += new System.EventHandler(this.Enter_Click);
@@ -58,33 +60,46 @@ namespace AngleFighter
             this.backBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.backBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backBtn.Location = new System.Drawing.Point(120, 762);
+            this.backBtn.Location = new System.Drawing.Point(80, 508);
+            this.backBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(239, 80);
+            this.backBtn.Size = new System.Drawing.Size(159, 53);
             this.backBtn.TabIndex = 1;
             this.backBtn.UseVisualStyleBackColor = false;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // IPAddress_txt
+            // 
+            this.IPAddress_txt.Font = new System.Drawing.Font("张海山锐谐体2.0-授权联系：Samtype@QQ.com", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.IPAddress_txt.Location = new System.Drawing.Point(424, 163);
+            this.IPAddress_txt.Name = "IPAddress_txt";
+            this.IPAddress_txt.Size = new System.Drawing.Size(249, 41);
+            this.IPAddress_txt.TabIndex = 2;
+            // 
             // RoomIPForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AngleFighter.Properties.Resources.RoomNumberBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1394, 928);
+            this.ClientSize = new System.Drawing.Size(929, 619);
+            this.Controls.Add(this.IPAddress_txt);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.Enter);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "RoomIPForm";
             this.Text = "RoomIPForm";
             this.Load += new System.EventHandler(this.RoomIPForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button Enter;
-        private System.Windows.Forms.Button backBtn;
+        public new System.Windows.Forms.Button Enter;
+        public System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.TextBox IPAddress_txt;
     }
 }

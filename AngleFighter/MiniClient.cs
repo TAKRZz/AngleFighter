@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AngleFighter
 {
-    class MiniClient
+    public class MiniClient
     {
         public int color;
         public string name;
