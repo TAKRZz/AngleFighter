@@ -69,7 +69,7 @@ namespace AngleFighter
                 socketWatch.Bind(point);
 
                 //设置监听队列
-                socketWatch.Listen(10);
+                socketWatch.Listen(5);
                 //在某一个时间点内，能连接server的最大client数量
                 //等待连接、创建通信socket
 
@@ -102,15 +102,16 @@ namespace AngleFighter
 
                 ClientCount++;
 
+                //List<byte> list = new List<byte>();
+                //// 开始下棋 加 1
+                //list.Add(1);
 
-                List<byte> list = new List<byte>();
-                // 开始下棋 加 1
-                list.Add(1);
-                byte[] newBuffer = list.ToArray();
-                socketSend.Send(newBuffer);
+                //byte[] newBuffer = list.ToArray();
 
-                //sendHost(socketSend);
-                //roomRefresh();
+                //socketSend.Send(newBuffer);
+
+                sendHost(socketSend);
+                roomRefresh();
 
 
             }
