@@ -48,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chess.cs" />
+    <Compile Include="Chess.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MiniClient.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Host.cs" />
@@ -163,7 +165,38 @@
     <None Include="bin\Debug\RoomBeginBtn.png" />
     <None Include="bin\Debug\Room.png" />
     <None Include="bin\Debug\EnterBtn.png" />
+    <None Include="Resources\chessPanel.png" />
+    <None Include="Resources\chessContainer.png" />
+    <None Include="Resources\1Blue.png" />
+    <None Include="Resources\2Yellow.png" />
+    <None Include="Resources\3Green.png" />
+    <None Include="Resources\4Red.png" />
+    <None Include="Resources\BlueGrid.bmp" />
+    <None Include="Resources\BlueGrid.png" />
+    <None Include="Resources\GreenGrid.png" />
+    <None Include="Resources\RedGrid.png" />
+    <None Include="Resources\YellowGrid.png" />
+    <Content Include="Resources\Music.mp3" />
     <Content Include="名称.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

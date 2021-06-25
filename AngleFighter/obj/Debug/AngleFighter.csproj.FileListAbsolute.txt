@@ -24,3 +24,6 @@ C:\Users\24962\Documents\GitHub\AngleFighter\AngleFighter\obj\Debug\AngleFighter
 C:\Users\24962\Documents\GitHub\AngleFighter\AngleFighter\obj\Debug\AngleFighter.csproj.CoreCompileInputs.cache
 C:\Users\24962\Documents\GitHub\AngleFighter\AngleFighter\obj\Debug\AngleFighter.exe
 C:\Users\24962\Documents\GitHub\AngleFighter\AngleFighter\obj\Debug\AngleFighter.pdb
+C:\Users\24962\Documents\GitHub\AngleFighter\AngleFighter\obj\Debug\Interop.WMPLib.dll
+C:\Users\24962\Documents\GitHub\AngleFighter\AngleFighter\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\24962\Documents\GitHub\AngleFighter\AngleFighter\obj\Debug\AngleFighter.csproj.ResolveComReference.cache

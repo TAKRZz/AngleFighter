@@ -94,9 +94,11 @@ namespace AngleFighter
         // 检测算法
         bool isPlaceAble(Chess chess)
         {
+            bool isPlaceable = true;
+
             if (IsOver(chess))
             {
-                return false;
+                isPlaceable = false;
             }
 
             //棋子覆盖与否
@@ -106,34 +108,37 @@ namespace AngleFighter
                 {
                     if(grid.GetX() == item.GetX() && grid.GetY() == item.GetY())
                     {
-                        if (item.GetColor() > 0) return false;//棋子覆盖，则不能下棋
+                        if (item.GetColor() > 0) isPlaceable = false;//棋子覆盖，则不能下棋
                     }
 
                     if (grid.GetX() + Grid.length == item.GetX() && grid.GetY() == item.GetY())
                     {
-                        if (item.GetColor()==grid.GetColor()) return false;
+                        if (item.GetColor()==grid.GetColor()) isPlaceable = false;
                     }
                     if (grid.GetX()  == item.GetX() && grid.GetY() + Grid.length == item.GetY())
                     {
-                        if (item.GetColor() == grid.GetColor()) return false;
+                        if (item.GetColor() == grid.GetColor()) isPlaceable = false;
                     }
                     if (grid.GetX() - Grid.length== item.GetX() && grid.GetY() == item.GetY())
                     {
-                        if (item.GetColor() == grid.GetColor()) return false;
+                        if (item.GetColor() == grid.GetColor()) isPlaceable = false;
                     }
                     if (grid.GetX() == item.GetX() && grid.GetY() - Grid.length == item.GetY())
                     {
-                        if (item.GetColor() == grid.GetColor()) return false;
+                        if (item.GetColor() == grid.GetColor()) isPlaceable = false;
                     }
                 }
             }
 
             for (int i = 0; i < chess.count; i++)
             {
-                return AngleCheck(chess.grids[i]);
+                if (!AngleCheck(chess.grids[i]))
+                {
+                    isPlaceable = false;
+                }
             }
 
-            return true;
+            return isPlaceable;
         }
 
         //根据输入的位置坐标修改格子的颜色

@@ -15,7 +15,7 @@ namespace AngleFighter
         public int color;
 
         //每个玩家拥有一个棋盘
-        private Pane pane;
+        private Pane pane = new Pane();
 
         //每个玩家有若干棋子
         private List<Chess> chesses;
@@ -25,7 +25,7 @@ namespace AngleFighter
 
         //玩家名称
 
-        public string name;
+        public string name = null;
 
         public abstract void sendPlayChess(Chess chess);
 
@@ -91,6 +91,17 @@ namespace AngleFighter
             }
 
             return chess;
+        }
+
+        //初始化玩家信息，应该在player的实现子类当中调用此方法
+        public void Init()
+        {
+            for(int count = 1;count < 22;count++)
+            {
+                Chess chess = Chess.GetChess(count);
+                chess.anchor.SetColor(this.color);
+                chesses.Add(chess);
+            }
         }
     }
 }

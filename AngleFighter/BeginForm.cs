@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace AngleFighter
 {
@@ -15,6 +16,7 @@ namespace AngleFighter
         public BeginForm()
         {
             InitializeComponent();
+            this.BgmPlayer.URL = @"Music.mp3";
         }
 
         private void BeginForm_Load(object sender, EventArgs e)
@@ -30,13 +32,10 @@ namespace AngleFighter
             //BeginBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             //BeginBtn.Location = new System.Drawing.Point(800,400);
             
-            Hide();
+            this.Hide();
             RoomSelect rooms = new RoomSelect();
 
             rooms.ShowDialog();
-            
-            this.Close();
-
         }
 
         
