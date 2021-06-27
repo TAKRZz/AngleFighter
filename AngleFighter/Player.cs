@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace AngleFighter
 {
-    abstract class Player
+    public abstract class Player
     {
         //游戏玩家得分
-        int score;
+        public int score;
 
         //颜色，进入房间时，系统分配
         public int color;
@@ -56,7 +56,7 @@ namespace AngleFighter
 
 
         //在棋盘显示一步棋
-        public abstract void addStep(Step step);
+
 
         //等待下棋
         public abstract void waiting();

@@ -16,29 +16,49 @@ namespace AngleFighter
         {
             InitializeComponent();
         }
+        
+        public Client client;
+        public RoomSelect roomSelect;
 
         private void RoomIPForm_Load(object sender, EventArgs e)
         {
-            this.Width = 944;
-            this.Height = 656;
+
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
 
         private void Enter_Click(object sender, EventArgs e)
         {
-            Hide();
-            RoomForm2 rm = new RoomForm2();
+            try
+            {
 
-            rm.ShowDialog();
-            this.Close();
+                Hide();
+                if(IPAddress_txt.Text!=null)
+                client.IP = this.IPAddress_txt.Text;
+
+                RoomForm2 rm = new RoomForm2();
+
+                client.roomForm2 = rm;
+                client.start();
+
+                rm.roomSelect = this.roomSelect;
+
+                rm.ShowDialog();
+
+                //this.Close();
+
+
+            }
+            catch
+            {
+
+            }
+
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
             Hide();
-            RoomSelect rm = new RoomSelect();
-
-            rm.ShowDialog();
+            roomSelect.Show();
             this.Close();
         }
     }

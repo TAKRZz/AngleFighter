@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace AngleFighter
 {
-    class MiniHost
+    public class MiniHost
     {
         public string name;
         public const int color = 1;
         public Socket socket;
 
-        MiniHost()
+        public MiniHost()
         {
             name = null;
             socket = null;

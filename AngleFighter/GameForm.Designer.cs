@@ -29,94 +29,57 @@ namespace AngleFighter
         /// </summary>
         private void InitializeComponent()
         {
-            this.chessPanel = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.chessContainer = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.chessPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.HostName_txt = new System.Windows.Forms.Label();
+            this.Client1Name_txt = new System.Windows.Forms.Label();
+            this.Client2Name_txt = new System.Windows.Forms.Label();
+            this.Client3Name_txt = new System.Windows.Forms.Label();
+            this.Timer_txt = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // chessPanel
+            // HostName_txt
             // 
-            this.chessPanel.BackgroundImage = global::AngleFighter.Properties.Resources.chessPanel;
-            this.chessPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.chessPanel.Controls.Add(this.pictureBox4);
-            this.chessPanel.Location = new System.Drawing.Point(129, 97);
-            this.chessPanel.Name = "chessPanel";
-            this.chessPanel.Size = new System.Drawing.Size(447, 427);
-            this.chessPanel.TabIndex = 0;
+            this.HostName_txt.AutoSize = true;
+            this.HostName_txt.Location = new System.Drawing.Point(657, 100);
+            this.HostName_txt.Name = "HostName_txt";
+            this.HostName_txt.Size = new System.Drawing.Size(29, 12);
+            this.HostName_txt.TabIndex = 0;
+            this.HostName_txt.Text = "Host";
             // 
-            // pictureBox4
+            // Client1Name_txt
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.BackgroundImage = global::AngleFighter.Properties.Resources._1Blue;
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(-136, 117);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(81, 78);
-            this.pictureBox4.TabIndex = 5;
-            this.pictureBox4.TabStop = false;
+            this.Client1Name_txt.AutoSize = true;
+            this.Client1Name_txt.Location = new System.Drawing.Point(31, 116);
+            this.Client1Name_txt.Name = "Client1Name_txt";
+            this.Client1Name_txt.Size = new System.Drawing.Size(47, 12);
+            this.Client1Name_txt.TabIndex = 1;
+            this.Client1Name_txt.Text = "Client1";
             // 
-            // chessContainer
+            // Client2Name_txt
             // 
-            this.chessContainer.BackgroundImage = global::AngleFighter.Properties.Resources.chessContainer;
-            this.chessContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.chessContainer.Location = new System.Drawing.Point(605, 214);
-            this.chessContainer.Name = "chessContainer";
-            this.chessContainer.Size = new System.Drawing.Size(301, 260);
-            this.chessContainer.TabIndex = 1;
+            this.Client2Name_txt.AutoSize = true;
+            this.Client2Name_txt.Location = new System.Drawing.Point(31, 264);
+            this.Client2Name_txt.Name = "Client2Name_txt";
+            this.Client2Name_txt.Size = new System.Drawing.Size(11, 12);
+            this.Client2Name_txt.TabIndex = 2;
+            this.Client2Name_txt.Text = "2";
             // 
-            // pictureBox1
+            // Client3Name_txt
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::AngleFighter.Properties.Resources._1Blue;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(605, 97);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(81, 78);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.Client3Name_txt.AutoSize = true;
+            this.Client3Name_txt.Location = new System.Drawing.Point(31, 418);
+            this.Client3Name_txt.Name = "Client3Name_txt";
+            this.Client3Name_txt.Size = new System.Drawing.Size(11, 12);
+            this.Client3Name_txt.TabIndex = 3;
+            this.Client3Name_txt.Text = "3";
             // 
-            // pictureBox2
+            // Timer_txt
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImage = global::AngleFighter.Properties.Resources._2Yellow;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 97);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(81, 78);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.BackgroundImage = global::AngleFighter.Properties.Resources._3Green;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(12, 253);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(81, 78);
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.BackgroundImage = global::AngleFighter.Properties.Resources._4Red;
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(12, 409);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(81, 78);
-            this.pictureBox5.TabIndex = 5;
-            this.pictureBox5.TabStop = false;
+            this.Timer_txt.AutoSize = true;
+            this.Timer_txt.Location = new System.Drawing.Point(821, 27);
+            this.Timer_txt.Name = "Timer_txt";
+            this.Timer_txt.Size = new System.Drawing.Size(35, 12);
+            this.Timer_txt.TabIndex = 4;
+            this.Timer_txt.Text = "Timer";
             // 
             // GameForm
             // 
@@ -125,35 +88,27 @@ namespace AngleFighter
             this.BackgroundImage = global::AngleFighter.Properties.Resources.GameBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(929, 619);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.chessContainer);
-            this.Controls.Add(this.chessPanel);
+            this.Controls.Add(this.Timer_txt);
+            this.Controls.Add(this.Client3Name_txt);
+            this.Controls.Add(this.Client2Name_txt);
+            this.Controls.Add(this.Client1Name_txt);
+            this.Controls.Add(this.HostName_txt);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GameForm";
             this.Text = "GameForm";
             this.Load += new System.EventHandler(this.GameForm_Load);
-            this.chessPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel chessPanel;
-        private System.Windows.Forms.Panel chessContainer;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        public System.Windows.Forms.Label HostName_txt;
+        public System.Windows.Forms.Label Client1Name_txt;
+        public System.Windows.Forms.Label Client2Name_txt;
+        public System.Windows.Forms.Label Client3Name_txt;
+        public System.Windows.Forms.Label Timer_txt;
     }
 }

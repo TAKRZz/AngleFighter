@@ -10,25 +10,30 @@ using System.Windows.Forms;
 
 namespace AngleFighter
 {
-    class Client : Player
+    public class Client : Player
     {
         //创建client socket
         Socket socketSend;
 
         const int targetPort = 23434;
 
-        MiniHost host0;
+        public MiniHost host0;
 
-        MiniClient client1, client2;
+        public MiniClient client1, client2;
 
+        public RoomForm2 roomForm2;
+        public GameForm gameForm;
 
-
-        Client()
+        public Client()
         {
             color = 0;
+            this.name = null;
             socketSend = new Socket(AddressFamily.InterNetwork,
                 SocketType.Stream, ProtocolType.Tcp);
-            turn = 0;
+            host0 = new MiniHost();
+            client1 = new MiniClient();
+            client2 = new MiniClient();
+            //turn = 0;
         }
 
         public void start()
@@ -43,7 +48,6 @@ namespace AngleFighter
                 Thread tr = new Thread(receive);
                 tr.IsBackground = true;
                 tr.Start();
-
                 //Thread tb = new Thread();
             }
             catch
@@ -53,20 +57,13 @@ namespace AngleFighter
 
         }
 
-        private void waitTurn()
-        {
-            while (true)
-            {
-                if(turn == 1) { }
-            }
-        }
 
         // 连接 Host
-        private void connect()
+        public void connect()
         {
             try
             {
-                IPAddress ip = IPAddress.Parse(serverIP.Text);// 输入框
+                IPAddress ip = IPAddress.Parse(this.IP);// 输入框
                 IPEndPoint point = new IPEndPoint(ip, Convert.ToInt32(targetPort));
                 socketSend.Connect(point);
                 sendClient();
@@ -86,6 +83,50 @@ namespace AngleFighter
             socketSend.Send(newbuffer);
         }
 
+        public void refreshRoom()
+        {
+            roomForm2.HostName_txt.Text = this.host0.name;
+
+            switch (this.color)
+            {
+                case 2:
+                    roomForm2.Client1_Name_txt.Text = this.name;
+                    break;
+                case 3:
+                    roomForm2.Client2_Name_txt.Text = this.name;
+                    break;
+                case 4:
+                    roomForm2.Client3_Name_txt.Text = this.name;
+                    break;
+            }
+            switch (this.client1.color)
+            {
+                case 2:
+                    roomForm2.Client1_Name_txt.Text = client1.name;
+                    break;
+                case 3:
+                    roomForm2.Client2_Name_txt.Text = client1.name;
+                    break;
+                case 4:
+                    roomForm2.Client3_Name_txt.Text = client1.name;
+                    break;
+            }
+            switch (this.client2.color)
+            {
+                case 2:
+                    roomForm2.Client1_Name_txt.Text = client2.name;
+                    break;
+                case 3:
+                    roomForm2.Client2_Name_txt.Text = client2.name;
+                    break;
+                case 4:
+                    roomForm2.Client3_Name_txt.Text = client2.name;
+                    break;
+            }
+            roomForm2.Refresh();
+
+        }
+
         // 接收消息  0 连接信息  1 开始游戏  2 下棋  3 认输  4 交流  5 结束 6 委托
         public void receive()
         {
@@ -102,7 +143,7 @@ namespace AngleFighter
                         string str = Encoding.UTF8.GetString(buffer, 1, r - 1);
                         if(this.color == 0)
                         {
-                            this.color = str[0] - '0';
+                            this.color = int.Parse(str.Substring(0,1));
                             host0.name = str.Substring(2);
                             
                         }
@@ -120,6 +161,8 @@ namespace AngleFighter
                                 client2.name = str.Substring(2);
                             }
                         }
+                        //refreshRoom();
+
                     }
                     else if (buffer[0] == 1)
                     {
@@ -205,9 +248,18 @@ namespace AngleFighter
             }
         }
 
-        public override void addStep(Step step)
+        public void gameStart()
         {
-            throw new NotImplementedException();
+            gameForm = new GameForm();
+            gameForm.roomForm2 = this.roomForm2;
+            //gameForm.HostName_txt.Text = this.host0.name;
+            //gameForm.Client1Name_txt.Text = this.roomForm2.Client1_Name_txt.Text;
+            //gameForm.Client2Name_txt.Text = this.roomForm2.Client2_Name_txt.Text;
+            //gameForm.Client3Name_txt.Text = this.roomForm2.Client3_Name_txt.Text;
+            
+            roomForm2.Hide();
+            
+            this.gameForm.ShowDialog();
         }
 
         public override void waiting()
