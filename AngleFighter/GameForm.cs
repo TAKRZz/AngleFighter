@@ -15,16 +15,16 @@ namespace AngleFighter
     {
         public Player P = new Host();//玩家对象，加入房间时进行绑定
         int current = 0;
-        private Chess chessToDisPlay;//容器中要展示的panel
+        private Chess chessToDisPlay;//容器中要展示的chess
         private bool Down = false;//用于检测控件是否进去容器边界
 
         public GameForm()
         {
             InitializeComponent();
-            DrawLinesForPanle();
             chessToDisPlay = P.GetChesses()[current];
-            chessToDisPlay.Location = new Point(this.chessContainer.Width / 2, this.chessContainer.Height / 2);
-            this.chessContainer.Controls.Add(chessToDisPlay);
+            chessToDisPlay.Location = new Point(this.chessContainer.Location.X+this.chessContainer.Width / 2, this.chessContainer.Location.Y+this.chessContainer.Height / 2);
+            this.Controls.Add(chessToDisPlay);
+            chessToDisPlay.BringToFront();
         }
 
         private void GameForm_Load(object sender, EventArgs e)
@@ -34,68 +34,63 @@ namespace AngleFighter
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
 
-        private void DrawLinesForPanle()
-        {
-            Graphics g = this.chessPanel.CreateGraphics();
-            Pen pen = Pens.Black;
-            GraphicsPath gp = new GraphicsPath();
-
-            for(int count = 0; count < 19; count++)
-            {
-                gp.AddLine(new Point((this.chessPanel.Width / 20) * (count + 1), 0), new Point((this.chessPanel.Width / 20) * (count + 1), this.chessPanel.Height));
-                gp.AddLine(new Point(0, (this.chessPanel.Height / 20) * (count + 1)), new Point(this.chessPanel.Width, (this.chessPanel.Height / 20) * (count + 1)));
-            }
-            gp.CloseAllFigures();
-            g.DrawPath(pen,gp);
-
-        }
-
-        private void chessPanel_DragDrop(object sender, DragEventArgs e)
-        {
-            Chess chess = (Chess)e.Data.GetData(typeof(Chess));
-            ((Panel)sender).Controls.Add(chess);
-            if (Down&&chess.m_clicked)
-            {
-                if (P.GetPane().isPlaceAble(P.GetPane().AdjustChess(chess)))
-                {
-                    P.PlayChess(chess);
-                    ((Panel)sender).Controls.Add(chess);
-                    Down = false;
-                }
-                
-            }
-            
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            this.chessContainer.Controls.Remove(chessToDisPlay);
+            this.Controls.Remove(chessToDisPlay);
+            
             current = (current + P.GetChesses().Count -1) % P.GetChesses().Count;
             chessToDisPlay = P.GetChesses()[current];
-            chessToDisPlay.Location = new Point(this.chessContainer.Width / 2, this.chessContainer.Height / 2);
-            this.chessContainer.Controls.Add(chessToDisPlay);
-            
+            chessToDisPlay.Location = new Point(this.chessContainer.Location.X + this.chessContainer.Width / 2, this.chessContainer.Location.Y + this.chessContainer.Height / 2);
+            this.Controls.Add(chessToDisPlay);
+            chessToDisPlay.BringToFront();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.chessContainer.Controls.Remove(chessToDisPlay);
+            this.Controls.Remove(chessToDisPlay);
+            this.
             current = (current + 1) % P.GetChesses().Count;
             chessToDisPlay = P.GetChesses()[current];
-            chessToDisPlay.Location = new Point(this.chessContainer.Width / 2, this.chessContainer.Height / 2);
-            this.chessContainer.Controls.Add(chessToDisPlay);
+            chessToDisPlay.Location = new Point(this.chessContainer.Location.X + this.chessContainer.Width / 2, this.chessContainer.Location.Y + this.chessContainer.Height / 2);
+            this.Controls.Add(chessToDisPlay);
+            chessToDisPlay.BringToFront();
             
         }
 
-        private void chessPanel_DragEnter(object sender, DragEventArgs e)
+
+        private void chessPanel_Paint(object sender, PaintEventArgs e)
         {
-            e.Effect = DragDropEffects.Move;
+            Graphics g = this.chessPanel.CreateGraphics();
+            Pen pen = Pens.Black;
+
+            for (int count = 0; count < 19; count++)
+            {
+                g.DrawLine(pen, new Point((this.chessPanel.Width / 20) * (count + 1), 0), new Point((this.chessPanel.Width / 20) * (count + 1), this.chessPanel.Height));
+                g.DrawLine(pen, new Point(0, (this.chessPanel.Height / 20) * (count + 1)), new Point(this.chessPanel.Width, (this.chessPanel.Height / 20) * (count + 1)));
+            }
+
+        }
+
+        private void chessPanel_Enter(object sender, EventArgs e)
+        {
             Down = true;
         }
 
-        private void chessContainer_DragLeave(object sender, EventArgs e)
+        private void GameForm_MouseUp(object sender, MouseEventArgs e)
         {
+            if (Down)
+            {
+                if (P.GetPane().isPlaceAble(P.GetPane().AdjustChess(chessToDisPlay)))
+                {
+                    P.PlayChess(chessToDisPlay);
+                    this.Controls.Remove(chessToDisPlay);
+                    chessToDisPlay.Location = this.chessPanel.PointToClient(chessToDisPlay.Location);
+                    this.chessPanel.Controls.Add(chessToDisPlay);
 
+                    button2_Click(sender,e);
+                }
+                chessToDisPlay.Location = new Point(this.chessContainer.Location.X + this.chessContainer.Width / 2, this.chessContainer.Location.Y + this.chessContainer.Height / 2);
+            }
         }
     }
 } 

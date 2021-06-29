@@ -56,8 +56,8 @@ namespace AngleFighter
             this.chessPanel.Name = "chessPanel";
             this.chessPanel.Size = new System.Drawing.Size(447, 427);
             this.chessPanel.TabIndex = 0;
-            this.chessPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.chessPanel_DragDrop);
-            this.chessPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.chessPanel_DragEnter);
+            this.chessPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.chessPanel_Paint);
+            this.chessPanel.Enter += new System.EventHandler(this.chessPanel_Enter);
             // 
             // pictureBox4
             // 
@@ -79,7 +79,6 @@ namespace AngleFighter
             this.chessContainer.Name = "chessContainer";
             this.chessContainer.Size = new System.Drawing.Size(301, 260);
             this.chessContainer.TabIndex = 1;
-            this.chessContainer.DragLeave += new System.EventHandler(this.chessContainer_DragLeave);
             // 
             // pictureBox1
             // 
@@ -168,6 +167,7 @@ namespace AngleFighter
             this.Name = "GameForm";
             this.Text = "GameForm";
             this.Load += new System.EventHandler(this.GameForm_Load);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GameForm_MouseUp);
             this.chessPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -107,6 +107,7 @@ namespace AngleFighter
             base.OnMouseDown(e);
             this.m_LastPoint = this.Location; 
             this.m_MousePoint = this.PointToScreen(e.Location);
+            /*this.DoDragDrop(this,DragDropEffects.Move);*/
             m_clicked = true;    
         }
 
