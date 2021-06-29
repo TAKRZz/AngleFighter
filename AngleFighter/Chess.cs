@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,7 @@ namespace AngleFighter
             for (int i = 0; i < grids.Count; i++)
             {
                 grids[i].SetColor(x);
+                Invalidate();
             }
 
         }
@@ -63,12 +65,21 @@ namespace AngleFighter
             }
         }
 
-        //通过锚点初始化棋子在棋盘上的位置
+        //通过锚点初始化棋子在棋盘上的坐标数据
         public void InitPosition(int x, int y)
         {
-            anchor.SetX(x);
-            anchor.SetY(y);
+            //获得坐标偏移量
+            int offsetX = x - anchor.GetX();
+            int offsetY = y - anchor.GetY();
+
+            //变化坐标
+            foreach(Grid grid in grids)
+            {
+                grid.SetX(grid.GetX() + offsetX);
+                grid.SetX(grid.GetY() + offsetY);
+            }
         }
+
         //棋子的ToString方法
         public override string ToString()
         {
@@ -88,27 +99,37 @@ namespace AngleFighter
 
         //重写鼠标方法，用于实现拖拽
         private Point m_MousePoint;
-        private Point m_LastPoint;
+        private Point m_LastPoint;//记录鼠标按下的位置
+        public bool m_clicked = false;
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
-            this.m_LastPoint = this.Location;
+            this.m_LastPoint = this.Location; 
             this.m_MousePoint = this.PointToScreen(e.Location);
+            m_clicked = true;    
         }
 
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            base.OnMouseMove(e);
-            if (e.Button == MouseButtons.Left)
+            if (m_clicked)
             {
-                Point t = this.PointToScreen(e.Location);
-                Point l = this.m_LastPoint;
+                base.OnMouseMove(e);
+                if (e.Button == MouseButtons.Left)
+                {
+                    Point t = this.PointToScreen(e.Location);
+                    Point l = this.m_LastPoint;
 
-                l.Offset(t.X - this.m_MousePoint.X, t.Y - this.m_MousePoint.Y);
-                this.Location = l;
+                    l.Offset(t.X - this.m_MousePoint.X, t.Y - this.m_MousePoint.Y);
+                    this.Location = l;
+                }
             }
+        }
+
+        protected override void OnMouseUp(MouseEventArgs mevent)
+        {
+            this.m_clicked = false;
         }
 
         //画棋子的方法
@@ -122,24 +143,30 @@ namespace AngleFighter
                     img = null;
                     break;
                 case 1:
-                    img = Image.FromFile(@"BlueGrid.png");
+                    img = Image.FromFile("C:\\Users\\24962\\Documents\\GitHub\\AngleFighter\\AngleFighter\\Resources\\BlueGrid.png");
                     break;
                 case 2:
-                    img = Image.FromFile(@"YellowGrid.png");
+                    img = Image.FromFile("C:\\Users\\24962\\Documents\\GitHub\\AngleFighter\\AngleFighter\\Resources\\YellowGrid.png");
                     break;
                 case 3:
-                    img = Image.FromFile(@"GreenGrid.png");
+                    img = Image.FromFile("C:\\Users\\24962\\Documents\\GitHub\\AngleFighter\\AngleFighter\\Resources\\GreenGrid.png");
                     break;
                 case 4:
-                    img = Image.FromFile(@"RedGrid.png");
+                    img = Image.FromFile("C:\\Users\\24962\\Documents\\GitHub\\AngleFighter\\AngleFighter\\Resources\\RedGrid.png");
                     break;
             }
 
+            Graphics g = e.Graphics;
+            GraphicsPath gp = new GraphicsPath();
+
             foreach (Grid grid in grids)
             {
-                Graphics g = e.Graphics;
-                g.DrawImage(img, grid.GetX(), grid.GetY(),Grid.length,Grid.length);
+                gp.AddRectangle(new RectangleF(grid.GetX(), grid.GetY(), Grid.length, Grid.length));
+                g.DrawImage(img,grid.GetX(), grid.GetY(), Grid.length, Grid.length);
             }
+
+            this.Region = new Region(gp);
+            this.Size = Parent.Size;
         }
 
 
@@ -458,7 +485,7 @@ namespace AngleFighter
             count = 3;
             grids.Add(anchor);
             grids.Add(new Grid(anchor.GetX() + Grid.length, anchor.GetY() + Grid.length * 3));
-            grids.Add(new Grid(anchor.GetX(), anchor.GetY() + Grid.length * 2));
+            grids.Add(new Grid(anchor.GetX(), anchor.GetY() + Grid.length * 3));
             grids.Add(new Grid(anchor.GetX(), anchor.GetY() + Grid.length));
             grids.Add(new Grid(anchor.GetX(), anchor.GetY() + Grid.length * 2));
         }

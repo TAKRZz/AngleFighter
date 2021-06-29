@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace AngleFighter
 {
-    class Client : Player
+    public class Client : Player
     {
         //创建client socket
         Socket socketSend;
@@ -21,10 +21,13 @@ namespace AngleFighter
 
         MiniClient client1, client2;
 
+        int turn;
 
 
-        Client()
+        public Client(int color)
         {
+            this.color = color;
+            base.Init();
             color = 0;
             socketSend = new Socket(AddressFamily.InterNetwork,
                 SocketType.Stream, ProtocolType.Tcp);
@@ -66,7 +69,7 @@ namespace AngleFighter
         {
             try
             {
-                IPAddress ip = IPAddress.Parse(serverIP.Text);// 输入框
+                IPAddress ip = IPAddress.Parse(null);// 输入框
                 IPEndPoint point = new IPEndPoint(ip, Convert.ToInt32(targetPort));
                 socketSend.Connect(point);
                 sendClient();
@@ -124,7 +127,7 @@ namespace AngleFighter
                     else if (buffer[0] == 1)
                     {
                         // 开始游戏
-                        gameStart();
+                        Console.WriteLine("game start");
 
                     }
                     else if (buffer[0] == 2)
@@ -203,11 +206,6 @@ namespace AngleFighter
             {
 
             }
-        }
-
-        public override void addStep(Step step)
-        {
-            throw new NotImplementedException();
         }
 
         public override void waiting()

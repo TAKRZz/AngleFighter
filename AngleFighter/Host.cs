@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace AngleFighter
 {
 
-    class Host : Player
+    public class Host : Player
     {
 
         //Socket socketSend;
@@ -29,6 +29,7 @@ namespace AngleFighter
         public Host()
         {
             this.color = 1;
+            base.Init();
             dicSocket = new Dictionary<string, Socket>();
             dicClient = new Dictionary<string, MiniClient>();
             Control.CheckForIllegalCrossThreadCalls = false;
@@ -306,11 +307,6 @@ namespace AngleFighter
             }
             catch { }
 
-        }
-
-        public override void addStep(Step step)
-        {
-            throw new NotImplementedException();
         }
 
         public override void waiting()

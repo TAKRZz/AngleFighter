@@ -176,6 +176,8 @@
     <None Include="Resources\GreenGrid.png" />
     <None Include="Resources\RedGrid.png" />
     <None Include="Resources\YellowGrid.png" />
+    <Content Include="Resources\Left.png" />
+    <Content Include="Resources\Right.png" />
     <Content Include="Resources\Music.mp3" />
     <Content Include="名称.txt" />
   </ItemGroup>

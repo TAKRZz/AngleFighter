@@ -36,6 +36,8 @@ namespace AngleFighter
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.chessPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -46,6 +48,7 @@ namespace AngleFighter
             // 
             // chessPanel
             // 
+            this.chessPanel.AllowDrop = true;
             this.chessPanel.BackgroundImage = global::AngleFighter.Properties.Resources.chessPanel;
             this.chessPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.chessPanel.Controls.Add(this.pictureBox4);
@@ -53,6 +56,8 @@ namespace AngleFighter
             this.chessPanel.Name = "chessPanel";
             this.chessPanel.Size = new System.Drawing.Size(447, 427);
             this.chessPanel.TabIndex = 0;
+            this.chessPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.chessPanel_DragDrop);
+            this.chessPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.chessPanel_DragEnter);
             // 
             // pictureBox4
             // 
@@ -67,12 +72,14 @@ namespace AngleFighter
             // 
             // chessContainer
             // 
+            this.chessContainer.AllowDrop = true;
             this.chessContainer.BackgroundImage = global::AngleFighter.Properties.Resources.chessContainer;
             this.chessContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.chessContainer.Location = new System.Drawing.Point(605, 214);
             this.chessContainer.Name = "chessContainer";
             this.chessContainer.Size = new System.Drawing.Size(301, 260);
             this.chessContainer.TabIndex = 1;
+            this.chessContainer.DragLeave += new System.EventHandler(this.chessContainer_DragLeave);
             // 
             // pictureBox1
             // 
@@ -118,14 +125,39 @@ namespace AngleFighter
             this.pictureBox5.TabIndex = 5;
             this.pictureBox5.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::AngleFighter.Properties.Resources.Left;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(817, 480);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(39, 37);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::AngleFighter.Properties.Resources.Right;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(862, 480);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(35, 37);
+            this.button2.TabIndex = 1;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // GameForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AngleFighter.Properties.Resources.GameBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(929, 619);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -155,5 +187,7 @@ namespace AngleFighter
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

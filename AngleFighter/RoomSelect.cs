@@ -12,6 +12,9 @@ namespace AngleFighter
 {
     public partial class RoomSelect : Form
     {
+        public Host host;
+        public Client client;
+        public Client[] clients = new Client[3];
         public RoomSelect()
         {
             InitializeComponent();

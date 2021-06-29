@@ -16,7 +16,6 @@ namespace AngleFighter
         public BeginForm()
         {
             InitializeComponent();
-            this.BgmPlayer.URL = @"Music.mp3";
         }
 
         private void BeginForm_Load(object sender, EventArgs e)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AngleFighter
 {
     
-    class Pane
+    public class Pane
     {
         //记录下棋的次序
         static int order = 0;
@@ -21,8 +21,8 @@ namespace AngleFighter
         // Pane 的 初始化
         public Pane()
         {
-            int x = 0;//左上角横坐标
-            int y = 0;//左上角纵坐标
+            int x = 129;//左上角横坐标
+            int y = 97;//左上角纵坐标
 
             for(int count = 0; count < grids.Capacity; count++)
             {
@@ -41,9 +41,20 @@ namespace AngleFighter
         // 在 Form 上显示 棋盘;
         void showPaneInForm() { }
 
-
-        // 下棋,利用棋子的锚点位置，将其贴合于最近的格子
+        //下棋
         public void PlayChess(Chess chess)
+        {
+            foreach (var grid in chess.grids)
+            {
+                ChangeColor(grid.GetX(), grid.GetY(), grid.GetColor());
+                //记录这一次下的棋
+                step = new Step(chess, order);
+
+            }
+        }
+
+        // 利用棋子的锚点位置，将其贴合于最近的格子
+        public Chess AdjustChess(Chess chess)
         {
             //下棋次序加一
             Pane.order++;
@@ -71,28 +82,11 @@ namespace AngleFighter
                 chess.anchor.SetY((y / Grid.length + 1) * Grid.length);
             }
 
-            //修改棋盘格子状态，实现下棋
-            if (isPlaceAble(chess))
-            {
-                foreach (var grid in chess.grids)
-                {
-                    ChangeColor(grid.GetX(), grid.GetY(), grid.GetColor());
-                    //记录这一次下的棋
-                    step = new Step(chess, order);
-                }
-            }
-            else
-            {
-                //棋子下不了 ，应该恢复棋子初始状态，并且将系统记录下棋次序减一
-                Console.WriteLine("you can't place a chess here");
-                chess = tempChess;
-                order--;
-            }
-
+            return chess;
         }
 
         // 检测算法
-        bool isPlaceAble(Chess chess)
+        public bool isPlaceAble(Chess chess)
         {
             bool isPlaceable = true;
 

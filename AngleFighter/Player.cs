@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace AngleFighter
 {
-    abstract class Player
+    public abstract class Player
     {
         //游戏玩家得分
         int score;
 
-        //颜色，进入房间时，系统分配
+        //颜色，进入房间时，系统分配,玩家实现类实例创建时，必须为该值赋值非零
         public int color;
 
         //每个玩家拥有一个棋盘
         private Pane pane = new Pane();
 
         //每个玩家有若干棋子
-        private List<Chess> chesses;
+        private List<Chess> chesses = new List<Chess>();
 
         //玩家IP地址
         public string IP;
@@ -32,13 +32,12 @@ namespace AngleFighter
         //根据棋子编号进行选择棋子，利用棋盘的接口进行下棋
         public void PlayChess(Chess chess)
         {
-           
             pane.PlayChess(chess);//下棋
 
             sendPlayChess(chess);//发送网络信息
 
             waiting();  // 将下棋等按钮置为灰色 
-            chesses.Remove(chess);//将棋子从剩余棋子当中移除
+            chesses.Remove(chess);//将棋子从剩余棋子当中移除 
         }
 
         //选择棋子
@@ -53,10 +52,6 @@ namespace AngleFighter
             }
             return null;
         }
-
-
-        //在棋盘显示一步棋
-        public abstract void addStep(Step step);
 
         //等待下棋
         public abstract void waiting();
@@ -99,9 +94,19 @@ namespace AngleFighter
             for(int count = 1;count < 22;count++)
             {
                 Chess chess = Chess.GetChess(count);
-                chess.anchor.SetColor(this.color);
+                chess.InitColor(color);
                 chesses.Add(chess);
             }
+        }
+
+        public List<Chess> GetChesses()
+        {
+            return this.chesses;
+        }
+
+        public Pane GetPane()
+        {
+            return this.pane;
         }
     }
 }
