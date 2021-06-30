@@ -151,13 +151,13 @@ namespace AngleFighter
                         string str = Encoding.UTF8.GetString(buffer, 1, r - 1);
 
                         // 缺少实现
-                        othersPlay(str);
+                        OthersPlay(str);
 
-                        sendPlayChess(TransferToChess(str));
+                        SendPlayChess(TransferToChess(str));
 
                         if (TransferToChess(str).color == 4)
                         {
-                            playing();
+                            Playing();
                         }
                     }
 
@@ -264,7 +264,7 @@ namespace AngleFighter
 
         // 发送信息 正常下棋 首位为3
         override
-        public void sendPlayChess(Chess chess)
+        public void SendPlayChess(Chess chess)
         {
             try
             {
@@ -309,12 +309,12 @@ namespace AngleFighter
 
         }
 
-        public override void waiting()
+        public override void Waiting()
         {
             throw new NotImplementedException();
         }
 
-        public override void playing()
+        public override void Playing()
         {
             throw new NotImplementedException();
         }

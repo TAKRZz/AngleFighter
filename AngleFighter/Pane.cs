@@ -32,15 +32,6 @@ namespace AngleFighter
             }
         }
 
-        // 在终端显示Pane
-        void showPane()
-        {
-            
-        }
-
-        // 在 Form 上显示 棋盘;
-        void showPaneInForm() { }
-
         //下棋
         public void PlayChess(Chess chess)
         {
@@ -51,38 +42,6 @@ namespace AngleFighter
                 step = new Step(chess, order);
 
             }
-        }
-
-        // 利用棋子的锚点位置，将其贴合于最近的格子
-        public Chess AdjustChess(Chess chess)
-        {
-            //下棋次序加一
-            Pane.order++;
-
-            //记录棋子的初始状态，用于不能下棋时的状态恢复
-            Chess tempChess = chess;
-
-            //将棋子贴在最近的格子
-            int x = chess.anchor.GetX();
-            int y = chess.anchor.GetY();
-            if (x % Grid.length < Grid.length / 2)
-            {
-                chess.anchor.SetX((x / Grid.length) * Grid.length);
-            }
-            else
-            {
-                chess.anchor.SetX((x / Grid.length + 1) * Grid.length);
-            }
-            if (y % Grid.length < Grid.length / 2)
-            {
-                chess.anchor.SetY((y / Grid.length) * Grid.length);
-            }
-            else
-            {
-                chess.anchor.SetY((y / Grid.length + 1) * Grid.length);
-            }
-
-            return chess;
         }
 
         // 检测算法

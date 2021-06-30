@@ -23,7 +23,7 @@ namespace AngleFighter
         int color;
 
         //格子边长，用于定义格子大小,假设是25像素，根据具体窗体大小进行调整
-        public static int length = 22;
+        public static int length = 21;
 
         public Grid()
         {

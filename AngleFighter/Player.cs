@@ -27,40 +27,28 @@ namespace AngleFighter
 
         public string name = null;
 
-        public abstract void sendPlayChess(Chess chess);
+        public abstract void SendPlayChess(Chess chess);
 
         //根据棋子编号进行选择棋子，利用棋盘的接口进行下棋
         public void PlayChess(Chess chess)
         {
             pane.PlayChess(chess);//下棋
 
-            sendPlayChess(chess);//发送网络信息
+            SendPlayChess(chess);//发送网络信息
 
-            waiting();  // 将下棋等按钮置为灰色 
+            score += chess.grids.Count;
+            Waiting();  // 将下棋等按钮置为灰色 
             chesses.Remove(chess);//将棋子从剩余棋子当中移除 
         }
 
-        //选择棋子
-        Chess ChooseChess(int No)
-        {
-            foreach(Chess chess in chesses)
-            {
-                if(chess.GetNo() == No)
-                {
-                    return chess;
-                }
-            }
-            return null;
-        }
-
         //等待下棋
-        public abstract void waiting();
+        public abstract void Waiting();
 
         //开始下棋
-        public abstract void playing();
+        public abstract void Playing();
 
         //来自网络的下棋
-        public void othersPlay(string chessStr)
+        public void OthersPlay(string chessStr)
         {
             pane.PlayChess(TransferToChess(chessStr));
         }

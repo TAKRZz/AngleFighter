@@ -65,32 +65,50 @@ namespace AngleFighter
 
             for (int count = 0; count < 19; count++)
             {
-                g.DrawLine(pen, new Point((this.chessPanel.Width / 20) * (count + 1), 0), new Point((this.chessPanel.Width / 20) * (count + 1), this.chessPanel.Height));
-                g.DrawLine(pen, new Point(0, (this.chessPanel.Height / 20) * (count + 1)), new Point(this.chessPanel.Width, (this.chessPanel.Height / 20) * (count + 1)));
+                //横线
+                g.DrawLine(pen, new Point((Grid.length) * (count + 1), 0), new Point((Grid.length) * (count + 1), this.chessPanel.Height));
+                //竖线
+                g.DrawLine(pen, new Point(0, (Grid.length) * (count + 1)), new Point(this.chessPanel.Width, (Grid.length) * (count + 1)));
             }
 
         }
 
-        private void chessPanel_Enter(object sender, EventArgs e)
+        private void chessPanel_MouseEnter(object sender, EventArgs e)
         {
             Down = true;
         }
 
-        private void GameForm_MouseUp(object sender, MouseEventArgs e)
+        private void chessPanel_MouseUp(object sender, MouseEventArgs e)
         {
             if (Down)
             {
-                if (P.GetPane().isPlaceAble(P.GetPane().AdjustChess(chessToDisPlay)))
-                {
-                    P.PlayChess(chessToDisPlay);
-                    this.Controls.Remove(chessToDisPlay);
-                    chessToDisPlay.Location = this.chessPanel.PointToClient(chessToDisPlay.Location);
-                    this.chessPanel.Controls.Add(chessToDisPlay);
-
-                    button2_Click(sender,e);
-                }
-                chessToDisPlay.Location = new Point(this.chessContainer.Location.X + this.chessContainer.Width / 2, this.chessContainer.Location.Y + this.chessContainer.Height / 2);
+                AdjustChess(chessToDisPlay);
+                
             }
+        }
+
+        private void AdjustChess(Chess chess)
+        {
+            //将棋子贴在最近的格子
+            int x = chess.Location.X - this.chessPanel.Location.X;
+            int y = chess.Location.Y - this.chessPanel.Location.Y;
+            if (x % Grid.length < Grid.length / 2)
+            {
+                chess.Location = new Point(this.chessPanel.Location.X + ((x / Grid.length) * Grid.length), chess.Location.Y);
+            }
+            else
+            {
+                chess.Location = new Point(this.chessPanel.Location.X + ((x / Grid.length +1) * Grid.length), chess.Location.Y);
+            }
+            if (y % Grid.length < Grid.length / 2)
+            {
+                chess.Location = new Point(chess.Location.X,this.chessPanel.Location.Y + ((y / Grid.length) * Grid.length));
+            }
+            else
+            {
+                chess.Location = new Point(chess.Location.X, this.chessPanel.Location.Y + ((y / Grid.length +1) * Grid.length));
+            }
+      
         }
     }
 } 
