@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AngleFighter
 {
-    
+
     public class Pane
     {
         //记录下棋的次序
@@ -16,19 +16,16 @@ namespace AngleFighter
         Step step;
 
         //定义棋盘结构
-        List<Grid> grids = new List<Grid>(100);
+        List<Grid> grids = new List<Grid>(400);
 
-        // Pane 的 初始化
-        public Pane()
+
+        public void InitGrids(int x,int y)
         {
-            int x = 129;//左上角横坐标
-            int y = 97;//左上角纵坐标
-
-            for(int count = 0; count < grids.Capacity; count++)
+            for (int count = 0; count < grids.Capacity; count++)
             {
                 grids.Add(new Grid(x, y));//将棋盘初始化为空白棋子
-                x = Grid.length * (count % 9);
-                y = Grid.length * ((count+1) / 10);
+                x = Grid.length * (count % 19);
+                y = Grid.length * ((count + 1) / 20);
             }
         }
 
@@ -59,20 +56,20 @@ namespace AngleFighter
             {
                 foreach (var item in grids)
                 {
-                    if(grid.GetX() == item.GetX() && grid.GetY() == item.GetY())
+                    if (grid.GetX() == item.GetX() && grid.GetY() == item.GetY())
                     {
                         if (item.GetColor() > 0) isPlaceable = false;//棋子覆盖，则不能下棋
                     }
 
                     if (grid.GetX() + Grid.length == item.GetX() && grid.GetY() == item.GetY())
                     {
-                        if (item.GetColor()==grid.GetColor()) isPlaceable = false;
+                        if (item.GetColor() == grid.GetColor()) isPlaceable = false;
                     }
-                    if (grid.GetX()  == item.GetX() && grid.GetY() + Grid.length == item.GetY())
+                    if (grid.GetX() == item.GetX() && grid.GetY() + Grid.length == item.GetY())
                     {
                         if (item.GetColor() == grid.GetColor()) isPlaceable = false;
                     }
-                    if (grid.GetX() - Grid.length== item.GetX() && grid.GetY() == item.GetY())
+                    if (grid.GetX() - Grid.length == item.GetX() && grid.GetY() == item.GetY())
                     {
                         if (item.GetColor() == grid.GetColor()) isPlaceable = false;
                     }
@@ -95,20 +92,21 @@ namespace AngleFighter
         }
 
         //根据输入的位置坐标修改格子的颜色
-        void ChangeColor(int x,int y,int color)
+        void ChangeColor(int x, int y, int color)
         {
-            GetGrid(x,y).SetColor(color);
+            GetGrid(x, y).SetColor(color);
         }
 
-        Grid GetGrid(int x, int y)
+        public Grid GetGrid(int x, int y)
         {
-            foreach (var item in grids)
+            foreach (var item in this.grids)
             {
                 if (item.GetX() == x && item.GetY() == y)
                 {
                     return item;
                 }
             }
+            
             return null;
         }
 
@@ -121,7 +119,7 @@ namespace AngleFighter
         //四角检测
         private bool AngleCheck(Grid grid)
         {
-            if (GetGrid(grid.GetX() + Grid.length, grid.GetY() + Grid.length).GetColor()== grid.GetColor())
+            if (GetGrid(grid.GetX() + Grid.length, grid.GetY() + Grid.length).GetColor() == grid.GetColor())
             {
                 return false;
             }
@@ -141,15 +139,14 @@ namespace AngleFighter
         }
 
         //越界检测
-        bool IsOver(Chess chess)
+        private bool IsOver(Chess chess)
         {
             foreach (Grid grid in chess.grids)
             {
                 if (this.grids.Contains(grid)) return false;
             }
-            return true ;
+            return true;
         }
 
     }
 }
-*/

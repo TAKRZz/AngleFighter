@@ -38,6 +38,9 @@ namespace AngleFighter
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.Surrender = new System.Windows.Forms.Button();
+            this.Confirm = new System.Windows.Forms.Button();
+            this.Round = new System.Windows.Forms.Button();
             this.chessPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.chessContainer.SuspendLayout();
@@ -45,9 +48,6 @@ namespace AngleFighter
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.Surrender = new System.Windows.Forms.Button();
-            this.Confirm = new System.Windows.Forms.Button();
-            this.Round = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chessPanel
@@ -56,9 +56,9 @@ namespace AngleFighter
             this.chessPanel.BackgroundImage = global::AngleFighter.Properties.Resources.chessPanel;
             this.chessPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.chessPanel.Controls.Add(this.pictureBox4);
-            this.chessPanel.Location = new System.Drawing.Point(142, 99);
+            this.chessPanel.Location = new System.Drawing.Point(209, 155);
             this.chessPanel.Name = "chessPanel";
-            this.chessPanel.Size = new System.Drawing.Size(420, 420);
+            this.chessPanel.Size = new System.Drawing.Size(640, 640);
             this.chessPanel.TabIndex = 0;
             this.chessPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.chessPanel_Paint);
             this.chessPanel.MouseEnter += new System.EventHandler(this.chessPanel_MouseEnter);
@@ -67,7 +67,6 @@ namespace AngleFighter
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.BackgroundImage = global::AngleFighter.Properties.Resources._1Blue;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox4.Location = new System.Drawing.Point(-136, 117);
             this.pictureBox4.Name = "pictureBox4";
@@ -82,9 +81,9 @@ namespace AngleFighter
             this.chessContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.chessContainer.Controls.Add(this.button2);
             this.chessContainer.Controls.Add(this.button1);
-            this.chessContainer.Location = new System.Drawing.Point(605, 214);
+            this.chessContainer.Location = new System.Drawing.Point(911, 326);
             this.chessContainer.Name = "chessContainer";
-            this.chessContainer.Size = new System.Drawing.Size(301, 260);
+            this.chessContainer.Size = new System.Drawing.Size(453, 399);
             this.chessContainer.TabIndex = 1;
             // 
             // button2
@@ -96,9 +95,9 @@ namespace AngleFighter
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(261, 223);
+            this.button2.Location = new System.Drawing.Point(385, 335);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(35, 35);
+            this.button2.Size = new System.Drawing.Size(65, 61);
             this.button2.TabIndex = 1;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -112,9 +111,9 @@ namespace AngleFighter
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(220, 223);
+            this.button1.Location = new System.Drawing.Point(311, 335);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 35);
+            this.button1.Size = new System.Drawing.Size(65, 61);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -124,9 +123,9 @@ namespace AngleFighter
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::AngleFighter.Properties.Resources._1Blue;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(605, 97);
+            this.pictureBox1.Location = new System.Drawing.Point(911, 168);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(81, 78);
+            this.pictureBox1.Size = new System.Drawing.Size(140, 140);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -135,9 +134,9 @@ namespace AngleFighter
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = global::AngleFighter.Properties.Resources._2Yellow;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 97);
+            this.pictureBox2.Location = new System.Drawing.Point(24, 254);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(81, 78);
+            this.pictureBox2.Size = new System.Drawing.Size(100, 100);
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
@@ -146,9 +145,9 @@ namespace AngleFighter
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.BackgroundImage = global::AngleFighter.Properties.Resources._3Green;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(12, 253);
+            this.pictureBox3.Location = new System.Drawing.Point(24, 433);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(81, 78);
+            this.pictureBox3.Size = new System.Drawing.Size(100, 100);
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
             // 
@@ -157,9 +156,9 @@ namespace AngleFighter
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.BackgroundImage = global::AngleFighter.Properties.Resources._4Red;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(12, 409);
+            this.pictureBox5.Location = new System.Drawing.Point(24, 612);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(81, 78);
+            this.pictureBox5.Size = new System.Drawing.Size(100, 100);
             this.pictureBox5.TabIndex = 5;
             this.pictureBox5.TabStop = false;
             // 
@@ -179,6 +178,7 @@ namespace AngleFighter
             this.Surrender.TabIndex = 0;
             this.Surrender.UseVisualStyleBackColor = false;
             this.Surrender.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Surrender_MouseDown);
+            this.Surrender.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Surrender_MouseUp);
             // 
             // Confirm
             // 
@@ -195,6 +195,7 @@ namespace AngleFighter
             this.Confirm.TabIndex = 1;
             this.Confirm.UseVisualStyleBackColor = false;
             this.Confirm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Confirm_MouseDown);
+            this.Confirm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Confirm_MouseUp);
             // 
             // Round
             // 
@@ -211,23 +212,22 @@ namespace AngleFighter
             this.Round.TabIndex = 2;
             this.Round.UseVisualStyleBackColor = false;
             this.Round.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Round_MouseDown);
+            this.Round.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Round_MouseUp);
             // 
             // GameForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AngleFighter.Properties.Resources.GameBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(929, 619);
+            this.ClientSize = new System.Drawing.Size(1400, 947);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.chessContainer);
             this.Controls.Add(this.chessPanel);
-            this.ClientSize = new System.Drawing.Size(1400, 947);
             this.Controls.Add(this.Round);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.Surrender);

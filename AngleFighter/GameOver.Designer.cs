@@ -35,7 +35,6 @@ namespace AngleFighter
             // BackToHome
             // 
             this.BackToHome.BackColor = System.Drawing.Color.Transparent;
-            this.BackToHome.BackgroundImage = global::AngleFighter.Properties.Resources.BackToHome;
             this.BackToHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackToHome.FlatAppearance.BorderSize = 0;
             this.BackToHome.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;

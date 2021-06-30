@@ -12,9 +12,6 @@ namespace AngleFighter
 {
     public partial class RoomSelect : Form
     {
-        public Host host;
-        public Client client;
-        public Client[] clients = new Client[3];
         public RoomSelect()
         {
             InitializeComponent();
@@ -72,13 +69,13 @@ namespace AngleFighter
         }
 
         private void JoinRoomBtn_MouseDown(object sender, MouseEventArgs e)
-        {
-            JoinRoomBtn.BackgroundImage = global::AngleFighter.Properties.Resources.JoinRoomBtn2;
+        {/*
+            JoinRoomBtn.BackgroundImage = global::AngleFighter.Properties.Resources.JoinRoomBtn2;*/
         }
 
         private void BackBtn_MouseDown(object sender, MouseEventArgs e)
         {
-            BackBtn.BackgroundImage = global::AngleFighter.Properties.Resources.BackBtn2;
+            /*BackBtn.BackgroundImage = global::AngleFighter.Properties.Resources.BackBtn2;*/
         }
     }
 }

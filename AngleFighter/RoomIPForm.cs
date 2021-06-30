@@ -44,7 +44,7 @@ namespace AngleFighter
 
         private void Enter_MouseDown(object sender, MouseEventArgs e)
         {
-            Enter.BackgroundImage = global::AngleFighter.Properties.Resources.EnterBtn2;
+            this.Enter.BackgroundImage = global::AngleFighter.Properties.Resources.EnterBtn2;
         }
 
         private void backBtn_MouseDown(object sender, MouseEventArgs e)

@@ -29,7 +29,7 @@ namespace AngleFighter
         /// </summary>
         private void InitializeComponent()
         {
-            this.enter = new System.Windows.Forms.Button();
+            this.Enter = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -77,7 +77,7 @@ namespace AngleFighter
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1400, 947);
             this.Controls.Add(this.backBtn);
-            this.Controls.Add(this.enter);
+            this.Controls.Add(this.Enter);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RoomIPForm";
@@ -89,7 +89,7 @@ namespace AngleFighter
 
         #endregion
 
-        private System.Windows.Forms.Button enter;
+        private System.Windows.Forms.Button Enter;
         private System.Windows.Forms.Button backBtn;
     }
 }

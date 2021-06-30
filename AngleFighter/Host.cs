@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -81,9 +81,9 @@ namespace AngleFighter
         public void listen(object o)
         {
             Socket socketWatch = o as Socket;
-       
+
             // 人数
-            while (ClientCount != 3) 
+            while (ClientCount != 3)
             {
                 Socket socketSend = socketWatch.Accept(); // 一直在等待连接
                 dicSocket.Add(socketSend.RemoteEndPoint.ToString(), socketSend);
@@ -121,7 +121,7 @@ namespace AngleFighter
         public void receive(object o)
         {
             Socket socketSend = o as Socket;
-            
+
             // 关掉后死循环
             while (true)
             {
@@ -141,12 +141,12 @@ namespace AngleFighter
                             dicClient[socketSend.RemoteEndPoint.ToString()].name = str.Substring(2);
                         }
                     }
-                    else if(buffer[0] == 1)
+                    else if (buffer[0] == 1)
                     {
                         // 接收不到
 
                     }
-                    else if(buffer[0] == 2)
+                    else if (buffer[0] == 2)
                     {
                         string str = Encoding.UTF8.GetString(buffer, 1, r - 1);
 
@@ -175,10 +175,10 @@ namespace AngleFighter
         public void sendHost(Socket socket)
         {
             try
-            {  
+            {
 
                 // toString 方法
-                string str = dicSocket.Count.ToString()+ " " + this.name;
+                string str = dicSocket.Count.ToString() + " " + this.name;
                 byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
                 List<byte> list = new List<byte>();
                 // 加 0
@@ -197,7 +197,7 @@ namespace AngleFighter
             return;
         }
 
-        public void sendMessage(string str,Socket socket,byte n)
+        public void sendMessage(string str, Socket socket, byte n)
         {
             try
             {
@@ -241,8 +241,8 @@ namespace AngleFighter
                 list.Add(2);
                 list.AddRange(buffer);
                 byte[] newBuffer = list.ToArray();
-                
-                
+
+
                 //每一个都发送
                 foreach (var i in dicSocket.Values)
                 {
@@ -277,7 +277,7 @@ namespace AngleFighter
                 list.AddRange(buffer);
                 byte[] newBuffer = list.ToArray();
                 // 每一个都发送
-                foreach(var i in dicClient.Values)
+                foreach (var i in dicClient.Values)
                 {
                     i.socket.Send(newBuffer);
                 }
@@ -303,7 +303,7 @@ namespace AngleFighter
                 {
                     i.socket.Send(newBuffer);
                 }
-               
+
             }
             catch { }
 
@@ -320,4 +320,3 @@ namespace AngleFighter
         }
     }
 }
-*/

@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,7 +38,7 @@ namespace AngleFighter
 
             score += chess.grids.Count;
             Waiting();  // 将下棋等按钮置为灰色 
-            chesses.Remove(chess);//将棋子从剩余棋子当中移除 
+            RemoveChess(chess);//将棋子从剩余棋子当中移除 
         }
 
         //等待下棋
@@ -79,7 +79,7 @@ namespace AngleFighter
         //初始化玩家信息，应该在player的实现子类当中调用此方法
         public void Init()
         {
-            for(int count = 1;count < 22;count++)
+            for (int count = 1; count < 22; count++)
             {
                 Chess chess = Chess.GetChess(count);
                 chess.InitColor(color);
@@ -96,6 +96,10 @@ namespace AngleFighter
         {
             return this.pane;
         }
+
+        private void RemoveChess(Chess chess)
+        {
+            chesses.RemoveAt(chess.GetNo() - 1);
+        }
     }
 }
-*/

@@ -124,8 +124,8 @@
   <data name="Left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="3Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_3Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_3Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SetBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SetBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -133,8 +133,8 @@
   <data name="BlueGrid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BlueGrid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="2Yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2Yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_2Yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_2Yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RoomBeginBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\RoomBeginBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -189,28 +189,25 @@
   </data>
   <data name="GameBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\GameBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="chessPanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\chessPanel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GameOverBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GameOverBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HistoryOfGameBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HistoryOfGameBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   <data name="RedGrid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RedGrid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Room" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Room.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="1Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_1Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_1Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RoomBackBtn2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RoomBackBtn2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RoomBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RoomBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   <data name="BeginBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BeginBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -220,21 +217,14 @@
   <data name="RoomBeginBtn2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RoomBeginBtn2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RoomNumberBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RoomNumberBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  <data name="GameBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\GameBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Round" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Round.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Round2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Round2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SetBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\SetBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  <data name="4Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\4Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_4Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_4Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

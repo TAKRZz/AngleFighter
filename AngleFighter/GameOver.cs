@@ -19,7 +19,7 @@ namespace AngleFighter
 
         private void BackToHome_MouseDown(object sender, MouseEventArgs e)
         {
-            BackToHome.BackgroundImage = global::AngleFighter.Properties.Resources.BackToHome2;
+            /*BackToHome.BackgroundImage = global::AngleFighter.Properties.Resources.BackToHome2;*/
         }
     }
 }
