@@ -55,5 +55,10 @@ namespace AngleFighter
             srm.ShowDialog();
             
         }
+
+        private void BeginBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            BeginBtn.BackgroundImage = global::AngleFighter.Properties.Resources.BeginBtn2;
+        }
     }
 }

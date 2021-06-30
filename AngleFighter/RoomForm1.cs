@@ -19,8 +19,8 @@ namespace AngleFighter
 
         private void RoomForm1_Load(object sender, EventArgs e)
         {
-            this.Width = 944;
-            this.Height = 656;
+            this.Width = 1416;
+            this.Height = 984;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
 
@@ -48,6 +48,16 @@ namespace AngleFighter
             SetForm srm = new SetForm();
 
             srm.ShowDialog();
+        }
+
+        private void bgBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            bgBtn.BackgroundImage = global::AngleFighter.Properties.Resources.RoomBeginBtn2;
+        }
+
+        private void BackBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            BackBtn.BackgroundImage = global::AngleFighter.Properties.Resources.RoomBackBtn2;
         }
     }
 }

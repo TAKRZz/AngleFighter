@@ -110,5 +110,20 @@ namespace AngleFighter
             }
       
         }
+
+        private void Confirm_MouseDown(object sender, MouseEventArgs e)
+        {
+            Confirm.BackgroundImage = global::AngleFighter.Properties.Resources.Confirm2;
+        }
+
+        private void Round_MouseDown(object sender, MouseEventArgs e)
+        {
+            Round.BackgroundImage = global::AngleFighter.Properties.Resources.Round2;
+        }
+
+        private void Surrender_MouseDown(object sender, MouseEventArgs e)
+        {
+            Surrender.BackgroundImage = global::AngleFighter.Properties.Resources.Surrender2;
+        }
     }
 } 

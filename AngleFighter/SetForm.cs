@@ -19,8 +19,8 @@ namespace AngleFighter
 
         private void SetForm_Load(object sender, EventArgs e)
         {
-            this.Width = 420;
-            this.Height = 594;
+            this.Width = 632;
+            this.Height = 894;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
 
