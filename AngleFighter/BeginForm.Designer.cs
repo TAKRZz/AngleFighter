@@ -46,7 +46,7 @@ namespace AngleFighter
             this.BeginBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.BeginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BeginBtn.Location = new System.Drawing.Point(266, 431);
-            this.BeginBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BeginBtn.Margin = new System.Windows.Forms.Padding(2);
             this.BeginBtn.Name = "BeginBtn";
             this.BeginBtn.Size = new System.Drawing.Size(428, 143);
             this.BeginBtn.TabIndex = 0;
@@ -64,7 +64,7 @@ namespace AngleFighter
             this.setBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.setBtn.ForeColor = System.Drawing.Color.Transparent;
             this.setBtn.Location = new System.Drawing.Point(858, 15);
-            this.setBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.setBtn.Margin = new System.Windows.Forms.Padding(2);
             this.setBtn.Name = "setBtn";
             this.setBtn.Size = new System.Drawing.Size(66, 66);
             this.setBtn.TabIndex = 1;
@@ -83,6 +83,7 @@ namespace AngleFighter
             // 
             // BeginForm
             // 
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
@@ -95,7 +96,7 @@ namespace AngleFighter
             this.DoubleBuffered = true;
             this.Name = "BeginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "AngleFighter";
             this.Load += new System.EventHandler(this.Begin);
             ((System.ComponentModel.ISupportInitialize)(this.BgmPlayer)).EndInit();
             this.ResumeLayout(false);

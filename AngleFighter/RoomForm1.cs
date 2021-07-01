@@ -12,6 +12,8 @@ namespace AngleFighter
 {
     public partial class RoomForm1 : Form
     {
+        public GameForm gameForm;
+        public Host host;
         public RoomForm1()
         {
             InitializeComponent();
@@ -19,18 +21,15 @@ namespace AngleFighter
 
         private void RoomForm1_Load(object sender, EventArgs e)
         {
-            this.Width = 944;
-            this.Height = 656;
+            this.begin_btn.Enabled = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
 
         private void bgBtn_Click(object sender, EventArgs e)
         {
             Hide();
-            GameForm rm = new GameForm();
+            host.StartGame();
 
-            rm.ShowDialog();
-            this.Close();
         }
 
         private void BackBtn_Click(object sender, EventArgs e)
@@ -48,6 +47,11 @@ namespace AngleFighter
             SetForm srm = new SetForm();
 
             srm.ShowDialog();
+        }
+
+        private void Host_IP_txt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

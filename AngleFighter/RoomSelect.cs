@@ -13,8 +13,7 @@ namespace AngleFighter
     public partial class RoomSelect : Form
     {
         public Host host;
-        public Client client;
-        public Client[] clients = new Client[3];
+
         public RoomSelect()
         {
             InitializeComponent();
@@ -29,19 +28,19 @@ namespace AngleFighter
 
         private void CreateRoomBtn_Click(object sender, EventArgs e)
         {
-            Hide();
-            RoomForm1 rm = new RoomForm1();
-
-            rm.ShowDialog();
-            this.Close();
+            this.Hide();
+            host = new Host(this.Name_txt.Text);
+            host.roomForm1.host = host;
+            host.roomForm1.gameForm = host.gameForm;
+            host.creRoom();
+            
         }
 
         private void JoinRoomBtn_Click(object sender, EventArgs e)
         {
-            Hide();
-            RoomIPForm iproom = new RoomIPForm();
-
-            iproom.ShowDialog();
+            this.Hide();
+            RoomIPForm roomIPForm = new RoomIPForm(this.Name_txt.Text);
+            roomIPForm.ShowDialog();
             this.Close();
         }
 
@@ -64,6 +63,11 @@ namespace AngleFighter
             SetForm srm = new SetForm();
 
             srm.ShowDialog();
+        }
+
+        private void Name_txt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

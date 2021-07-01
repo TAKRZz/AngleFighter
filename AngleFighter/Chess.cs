@@ -131,6 +131,8 @@ namespace AngleFighter
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
             this.m_clicked = false;
+
+
         }
 
         //画棋子的方法
@@ -138,22 +140,28 @@ namespace AngleFighter
         {
             base.OnPaint(e);
             Image img = null;
+            string path = Application.StartupPath;
             switch (color)
             {
                 case 0:
                     img = null;
                     break;
                 case 1:
-                    img = Image.FromFile("C:\\Users\\24962\\Documents\\GitHub\\AngleFighter\\AngleFighter\\Resources\\BlueGrid.png");
+                    path = path + "\\BlueGrid.png";
+                    Console.WriteLine(path);
+                    img = Image.FromFile(path);
                     break;
                 case 2:
-                    img = Image.FromFile("C:\\Users\\24962\\Documents\\GitHub\\AngleFighter\\AngleFighter\\Resources\\YellowGrid.png");
+                    path = path + "\\YellowGrid.png";
+                    img = Image.FromFile(path);
                     break;
                 case 3:
-                    img = Image.FromFile("C:\\Users\\24962\\Documents\\GitHub\\AngleFighter\\AngleFighter\\Resources\\GreenGrid.png");
+                    path = path + "\\GreenGrid.png";
+                    img = Image.FromFile(path);
                     break;
                 case 4:
-                    img = Image.FromFile("C:\\Users\\24962\\Documents\\GitHub\\AngleFighter\\AngleFighter\\Resources\\RedGrid.png");
+                    path = path + "\\RedGrid.png";
+                    img = Image.FromFile(path);
                     break;
             }
 

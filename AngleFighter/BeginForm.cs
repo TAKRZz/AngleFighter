@@ -20,29 +20,22 @@ namespace AngleFighter
 
         private void BeginForm_Load(object sender, EventArgs e)
         {
-            this.Width = 944;
-            this.Height = 656;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
 
         private void BeginBtn_Click(object sender, EventArgs e)
         {
-            // BeginBtn.BackgroudImage = "BeginBtn.png";
-            //BeginBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            //BeginBtn.Location = new System.Drawing.Point(800,400);
-            
             this.Hide();
             RoomSelect rooms = new RoomSelect();
-
             rooms.ShowDialog();
+            this.Close();
+
         }
 
-        
+
 
         private void Begin(object sender, EventArgs e)
         {
-            //this.Width = 944;
-            //this.Height = 656;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
 

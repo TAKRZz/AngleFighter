@@ -34,6 +34,7 @@ namespace AngleFighter
             this.HistoryOfGameBtn = new System.Windows.Forms.Button();
             this.BackBtn = new System.Windows.Forms.Button();
             this.setBtn = new System.Windows.Forms.Button();
+            this.Name_txt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CreateRoomBtn
@@ -45,9 +46,10 @@ namespace AngleFighter
             this.CreateRoomBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.CreateRoomBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.CreateRoomBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateRoomBtn.Location = new System.Drawing.Point(449, 285);
+            this.CreateRoomBtn.Location = new System.Drawing.Point(299, 190);
+            this.CreateRoomBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CreateRoomBtn.Name = "CreateRoomBtn";
-            this.CreateRoomBtn.Size = new System.Drawing.Size(524, 175);
+            this.CreateRoomBtn.Size = new System.Drawing.Size(349, 117);
             this.CreateRoomBtn.TabIndex = 0;
             this.CreateRoomBtn.UseVisualStyleBackColor = false;
             this.CreateRoomBtn.Click += new System.EventHandler(this.CreateRoomBtn_Click);
@@ -61,9 +63,10 @@ namespace AngleFighter
             this.JoinRoomBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.JoinRoomBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.JoinRoomBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.JoinRoomBtn.Location = new System.Drawing.Point(449, 501);
+            this.JoinRoomBtn.Location = new System.Drawing.Point(299, 334);
+            this.JoinRoomBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.JoinRoomBtn.Name = "JoinRoomBtn";
-            this.JoinRoomBtn.Size = new System.Drawing.Size(524, 175);
+            this.JoinRoomBtn.Size = new System.Drawing.Size(349, 117);
             this.JoinRoomBtn.TabIndex = 1;
             this.JoinRoomBtn.UseVisualStyleBackColor = false;
             this.JoinRoomBtn.Click += new System.EventHandler(this.JoinRoomBtn_Click);
@@ -77,9 +80,10 @@ namespace AngleFighter
             this.HistoryOfGameBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.HistoryOfGameBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.HistoryOfGameBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HistoryOfGameBtn.Location = new System.Drawing.Point(449, 717);
+            this.HistoryOfGameBtn.Location = new System.Drawing.Point(299, 478);
+            this.HistoryOfGameBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.HistoryOfGameBtn.Name = "HistoryOfGameBtn";
-            this.HistoryOfGameBtn.Size = new System.Drawing.Size(524, 175);
+            this.HistoryOfGameBtn.Size = new System.Drawing.Size(349, 117);
             this.HistoryOfGameBtn.TabIndex = 2;
             this.HistoryOfGameBtn.UseVisualStyleBackColor = false;
             this.HistoryOfGameBtn.Click += new System.EventHandler(this.HistoryOfGameBtn_Click);
@@ -93,9 +97,10 @@ namespace AngleFighter
             this.BackBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.BackBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.BackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackBtn.Location = new System.Drawing.Point(31, 798);
+            this.BackBtn.Location = new System.Drawing.Point(21, 532);
+            this.BackBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BackBtn.Name = "BackBtn";
-            this.BackBtn.Size = new System.Drawing.Size(227, 80);
+            this.BackBtn.Size = new System.Drawing.Size(151, 53);
             this.BackBtn.TabIndex = 3;
             this.BackBtn.UseVisualStyleBackColor = false;
             this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
@@ -110,30 +115,50 @@ namespace AngleFighter
             this.setBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.setBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.setBtn.ForeColor = System.Drawing.Color.Transparent;
-            this.setBtn.Location = new System.Drawing.Point(1283, 12);
+            this.setBtn.Location = new System.Drawing.Point(855, 8);
+            this.setBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.setBtn.Name = "setBtn";
-            this.setBtn.Size = new System.Drawing.Size(99, 99);
+            this.setBtn.Size = new System.Drawing.Size(66, 66);
             this.setBtn.TabIndex = 4;
             this.setBtn.UseVisualStyleBackColor = false;
             this.setBtn.Click += new System.EventHandler(this.setBtn_Click);
             // 
+            // Name_txt
+            // 
+            this.Name_txt.Font = new System.Drawing.Font("张海山锐谐体2.0-授权联系：Samtype@QQ.com", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Name_txt.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.Name_txt.Location = new System.Drawing.Point(425, 110);
+            this.Name_txt.Name = "Name_txt";
+            this.Name_txt.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Name_txt.Size = new System.Drawing.Size(209, 48);
+            this.Name_txt.TabIndex = 5;
+            this.Name_txt.Text = "Player";
+            this.Name_txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Name_txt.TextChanged += new System.EventHandler(this.Name_txt_TextChanged);
+            // 
             // RoomSelect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AllowDrop = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AngleFighter.Properties.Resources.RoomBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1394, 928);
+            this.ClientSize = new System.Drawing.Size(929, 619);
+            this.Controls.Add(this.Name_txt);
             this.Controls.Add(this.setBtn);
             this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.HistoryOfGameBtn);
             this.Controls.Add(this.JoinRoomBtn);
             this.Controls.Add(this.CreateRoomBtn);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "RoomSelect";
-            this.Text = "RoomSelect";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "AngleFighter";
             this.Load += new System.EventHandler(this.RoomSelect_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -144,5 +169,6 @@ namespace AngleFighter
         private System.Windows.Forms.Button HistoryOfGameBtn;
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Button setBtn;
+        private System.Windows.Forms.TextBox Name_txt;
     }
 }

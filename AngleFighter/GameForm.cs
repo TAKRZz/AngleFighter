@@ -13,7 +13,7 @@ namespace AngleFighter
 {
     public partial class GameForm : Form
     {
-        public Player P = new Host();//玩家对象，加入房间时进行绑定
+        public Player P;//玩家对象，加入房间时进行绑定
         int current = 0;
         private Chess chessToDisPlay;//容器中要展示的chess
         private bool Down = false;//用于检测控件是否进去容器边界
@@ -21,16 +21,15 @@ namespace AngleFighter
         public GameForm()
         {
             InitializeComponent();
-            chessToDisPlay = P.GetChesses()[current];
-            chessToDisPlay.Location = new Point(this.chessContainer.Location.X+this.chessContainer.Width / 2, this.chessContainer.Location.Y+this.chessContainer.Height / 2);
-            this.Controls.Add(chessToDisPlay);
-            chessToDisPlay.BringToFront();
+            
         }
 
         private void GameForm_Load(object sender, EventArgs e)
         {
-            this.Width = 944;
-            this.Height = 656;
+            chessToDisPlay = P.GetChesses()[current];
+            chessToDisPlay.Location = new Point(this.chessContainer.Location.X + this.chessContainer.Width / 2, this.chessContainer.Location.Y + this.chessContainer.Height / 2);
+            this.Controls.Add(chessToDisPlay);
+            chessToDisPlay.BringToFront();
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         }
 

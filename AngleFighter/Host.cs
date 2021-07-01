@@ -21,23 +21,37 @@ namespace AngleFighter
 
         //MiniClient client1, client2, client3;
 
+        public RoomForm1 roomForm1;
+
+        public GameForm gameForm;
+
         // 回合计数
         int turnCount;
         const int Port = 23434;
         // 记录连接进来的client数量
         int ClientCount;
-        public Host()
+        public Host(string name)
         {
+            this.name = name;
             this.color = 1;
             base.Init();
             dicSocket = new Dictionary<string, Socket>();
             dicClient = new Dictionary<string, MiniClient>();
             Control.CheckForIllegalCrossThreadCalls = false;
-            string name = Dns.GetHostName();
-            IPAddress[] ip = Dns.GetHostAddresses(name);
+            string name0 = Dns.GetHostName();
+            IPAddress[] ip = Dns.GetHostAddresses(name0);
+
             this.IP = ip[ip.Length - 1].ToString();
+
+            this.roomForm1 = new RoomForm1();
+            this.roomForm1.Host_IP_txt.Text = this.IP;
+
+            this.gameForm = new GameForm();
+            this.gameForm.P = this;
+
             ClientCount = 0;
             turnCount = 0;
+
 
         }
 
@@ -61,55 +75,43 @@ namespace AngleFighter
                 socketWatch.Bind(point);
 
                 //设置监听队列
-                socketWatch.Listen(3);
+                socketWatch.Listen(10);
                 //在某一个时间点内，能连接server的最大client数量
                 //等待连接、创建通信socket
                 Thread thread = new Thread(listen);
                 thread.IsBackground = true;
                 thread.Start(socketWatch);
 
+                roomForm1.ShowDialog();
             }
             catch
             {
-
             }
 
         }
 
-
+        
         // 开始监听
         public void listen(object o)
         {
             Socket socketWatch = o as Socket;
        
             // 人数
-            while (ClientCount != 3) 
+            while (true) 
             {
                 Socket socketSend = socketWatch.Accept(); // 一直在等待连接
                 dicSocket.Add(socketSend.RemoteEndPoint.ToString(), socketSend);
-                //if (ClientCount == 0)
-                //{
-                //    dicClient.Add(socketSend.RemoteEndPoint.ToString(), new MiniClient(socketSend));
-                //    //client1.socket = socketSend;
-                //}
-                //if (ClientCount == 1)
-                //{
-                //    dicClient.Add(socketSend.RemoteEndPoint.ToString(), new MiniClient(soc);
-                //    client2.socket = socketSend;
-                //}
-                //if (ClientCount == 2)
-                //{
-                //    dicClient.Add(socketSend.RemoteEndPoint.ToString(), client3);
-                //    client3.socket = socketSend;
-                //}
 
                 dicClient.Add(socketSend.RemoteEndPoint.ToString(), new MiniClient(socketSend));
 
                 Thread th = new Thread(receive);
                 th.IsBackground = true;
                 th.Start(socketSend);
-
                 ClientCount++;
+                if(ClientCount == 3)
+                {
+                    roomForm1.begin_btn.Enabled = true;
+                }
                 sendHost(socketSend);
                 roomRefresh();
 
@@ -120,8 +122,7 @@ namespace AngleFighter
         // 信息的种类    
         public void receive(object o)
         {
-            Socket socketSend = o as Socket;
-            
+            Socket socketSend = o as Socket; 
             // 关掉后死循环
             while (true)
             {
@@ -136,10 +137,9 @@ namespace AngleFighter
                     if (buffer[0] == 0)
                     {
                         string str = Encoding.UTF8.GetString(buffer, 1, r - 1);
-                        if (str[0] == '0')
-                        {
-                            dicClient[socketSend.RemoteEndPoint.ToString()].name = str.Substring(2);
-                        }
+
+                        dicClient[socketSend.RemoteEndPoint.ToString()].name = str;
+                       
                     }
                     else if(buffer[0] == 1)
                     {
@@ -178,7 +178,7 @@ namespace AngleFighter
             {  
 
                 // toString 方法
-                string str = dicSocket.Count.ToString()+ " " + this.name;
+                string str = dicSocket.Count.ToString() + " " + this.name;
                 byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
                 List<byte> list = new List<byte>();
                 // 加 0
@@ -186,15 +186,11 @@ namespace AngleFighter
                 list.AddRange(buffer);
                 byte[] newBuffer = list.ToArray();
                 socket.Send(newBuffer);
-
-
             }
             catch
             {
 
             }
-
-            return;
         }
 
         public void sendMessage(string str,Socket socket,byte n)
@@ -221,6 +217,7 @@ namespace AngleFighter
 
                     foreach (var n in dicClient.Values)
                     {
+                        if (i.color == n.color) continue;
                         sendMessage(n.ToString(), i.socket, 0);
                     }
                 }
@@ -229,32 +226,22 @@ namespace AngleFighter
         }
 
         // 开始下棋 首位为2
-        public void sendStartGame()
+
+        public void StartGame()
         {
             try
             {
                 // toString 方法
-                string str = null;
-                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
                 List<byte> list = new List<byte>();
-                // 开始下棋 加 2
-                list.Add(2);
-                list.AddRange(buffer);
+                list.Add(1);
                 byte[] newBuffer = list.ToArray();
-                
                 
                 //每一个都发送
                 foreach (var i in dicSocket.Values)
                 {
                     i.Send(newBuffer);
                 }
-
-                //client1.socket.Send(newBuffer);
-                //client2.socket.Send(newBuffer);
-                //client3.socket.Send(newBuffer);
-                //string ip = cboUsers.SelectedItem.ToString();
-                //dicSocket[ip].Send(newBuffer);
-                //socketSend.Send(buffer);
+                this.gameForm.ShowDialog();
 
             }
             catch { }

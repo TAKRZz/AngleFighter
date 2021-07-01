@@ -31,6 +31,7 @@ namespace AngleFighter
         {
             this.enter = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
+            this.IP_txt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // enter
@@ -43,7 +44,7 @@ namespace AngleFighter
             this.enter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enter.Location = new System.Drawing.Point(360, 288);
-            this.enter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.enter.Margin = new System.Windows.Forms.Padding(2);
             this.enter.Name = "enter";
             this.enter.Size = new System.Drawing.Size(219, 79);
             this.enter.TabIndex = 0;
@@ -60,12 +61,22 @@ namespace AngleFighter
             this.backBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backBtn.Location = new System.Drawing.Point(80, 508);
-            this.backBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.backBtn.Margin = new System.Windows.Forms.Padding(2);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(159, 53);
             this.backBtn.TabIndex = 1;
             this.backBtn.UseVisualStyleBackColor = false;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            // 
+            // IP_txt
+            // 
+            this.IP_txt.Font = new System.Drawing.Font("张海山锐谐体2.0-授权联系：Samtype@QQ.com", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.IP_txt.Location = new System.Drawing.Point(422, 167);
+            this.IP_txt.Name = "IP_txt";
+            this.IP_txt.Size = new System.Drawing.Size(251, 34);
+            this.IP_txt.TabIndex = 2;
+            this.IP_txt.Text = "000.000.000.000";
+            this.IP_txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // RoomIPForm
             // 
@@ -74,14 +85,16 @@ namespace AngleFighter
             this.BackgroundImage = global::AngleFighter.Properties.Resources.RoomNumberBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(929, 619);
+            this.Controls.Add(this.IP_txt);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.enter);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RoomIPForm";
             this.Text = "RoomIPForm";
             this.Load += new System.EventHandler(this.RoomIPForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -89,5 +102,6 @@ namespace AngleFighter
 
         private System.Windows.Forms.Button enter;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.TextBox IP_txt;
     }
 }

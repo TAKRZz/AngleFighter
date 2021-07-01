@@ -23,16 +23,30 @@ namespace AngleFighter
 
         int turn;
 
+        RoomForm2 roomForm2;
 
-        public Client(int color)
+        GameForm gameForm;
+
+        public Client(String name, string ip)
         {
-            this.color = color;
+            this.name = name;
+            this.IP = ip;
+
             base.Init();
             color = 0;
+
             socketSend = new Socket(AddressFamily.InterNetwork,
                 SocketType.Stream, ProtocolType.Tcp);
+            roomForm2 = new RoomForm2();
+            gameForm = new GameForm();
+            gameForm.P = this;
+            host0 = new MiniHost();
+            client1 = new MiniClient();
+            client2 = new MiniClient();
             turn = 0;
         }
+
+
 
         public void start()
         {
@@ -47,7 +61,7 @@ namespace AngleFighter
                 tr.IsBackground = true;
                 tr.Start();
 
-                //Thread tb = new Thread();
+                roomForm2.ShowDialog();
             }
             catch
             {
@@ -58,10 +72,6 @@ namespace AngleFighter
 
         private void waitTurn()
         {
-            while (true)
-            {
-                if(turn == 1) { }
-            }
         }
 
         // 连接 Host
@@ -69,7 +79,7 @@ namespace AngleFighter
         {
             try
             {
-                IPAddress ip = IPAddress.Parse(null);// 输入框
+                IPAddress ip = IPAddress.Parse(IP);
                 IPEndPoint point = new IPEndPoint(ip, Convert.ToInt32(targetPort));
                 socketSend.Connect(point);
                 sendClient();
@@ -80,7 +90,7 @@ namespace AngleFighter
         // 发送自己的名字 加 0 做标记
         public void sendClient()
         {
-            string str = "0 " + this.name;
+            string str = this.name;
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
             List<byte> list = new List<byte>();
             list.Add(0);
@@ -103,31 +113,38 @@ namespace AngleFighter
                     if (buffer[0] == 0)
                     {
                         string str = Encoding.UTF8.GetString(buffer, 1, r - 1);
-                        if(this.color == 0)
+                        if (this.color == 0)
                         {
-                            this.color = str[0] - '0';
+                            this.color = int.Parse(str[0].ToString());
                             host0.name = str.Substring(2);
-                            
                         }
-                        int c0 = str[0] - '0';
-                        if (c0 != this.color)
+                        else
                         {
-                            if(client1.name == null)
+                            int c0 = int.Parse(str[0].ToString());
+
+                            if (c0 != this.color && c0 != 1) 
                             {
-                                client1.color = c0;
-                                client1.name = str.Substring(2);
-                            }
-                            else if (client2.name == null)
-                            {
-                                client2.color = c0;
-                                client2.name = str.Substring(2);
+                                if (client1.name == null)
+                                {
+                                    client1.color = c0;
+                                    client1.name = str.Substring(2, str.Length - 2);
+                                }
+                                else if (client2.name == null)
+                                {
+                                    client2.color = c0;
+                                    client2.name = str.Substring(2, str.Length - 2);
+                                }
                             }
                         }
                     }
                     else if (buffer[0] == 1)
                     {
+
+                        Console.WriteLine(this.host0.ToString());
+                        Console.WriteLine(this.client1.ToString());
+                        Console.WriteLine(this.client2.ToString());
                         // 开始游戏
-                        Console.WriteLine("game start");
+                        GameStart();
 
                     }
                     else if (buffer[0] == 2)
@@ -165,6 +182,15 @@ namespace AngleFighter
                 {
                 }
             }
+        }
+
+        private void GameStart()
+        {
+            Console.WriteLine(this.color + "GameStart");
+
+            this.roomForm2.Hide();
+            this.gameForm.ShowDialog();
+
         }
 
         // 下棋 
