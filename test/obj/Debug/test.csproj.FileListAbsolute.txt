@@ -1,0 +1,11 @@
+C:\Users\24962\Documents\GitHub\AngleFighter\test\bin\Debug\test.exe.config
+C:\Users\24962\Documents\GitHub\AngleFighter\test\bin\Debug\test.exe
+C:\Users\24962\Documents\GitHub\AngleFighter\test\bin\Debug\test.pdb
+C:\Users\24962\Documents\GitHub\AngleFighter\test\bin\Debug\AngleFighter.exe
+C:\Users\24962\Documents\GitHub\AngleFighter\test\bin\Debug\AngleFighter.pdb
+C:\Users\24962\Documents\GitHub\AngleFighter\test\bin\Debug\AngleFighter.exe.config
+C:\Users\24962\Documents\GitHub\AngleFighter\test\obj\Debug\test.csprojAssemblyReference.cache
+C:\Users\24962\Documents\GitHub\AngleFighter\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+C:\Users\24962\Documents\GitHub\AngleFighter\test\obj\Debug\test.csproj.CopyComplete
+C:\Users\24962\Documents\GitHub\AngleFighter\test\obj\Debug\test.exe
+C:\Users\24962\Documents\GitHub\AngleFighter\test\obj\Debug\test.pdb

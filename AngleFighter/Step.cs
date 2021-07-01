@@ -11,7 +11,7 @@ namespace AngleFighter
         public Chess chess;
         public int order;
         public int color;
-        public Step(Chess chess,int order)
+        public Step(Chess chess, int order)
         {
             this.chess = chess;
             this.order = order;
@@ -22,6 +22,6 @@ namespace AngleFighter
         {
             return chess.ToString() + order;
         }
-    
+
     }
 }

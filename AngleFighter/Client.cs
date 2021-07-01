@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -152,12 +152,12 @@ namespace AngleFighter
                         // 下棋
                         // 显示
                         string str = Encoding.UTF8.GetString(buffer, 1, r - 1);
-                        othersPlay(str);
+                        OthersPlay(str);
 
                         // 轮到你下棋
                         if (TransferToChess(str).color + 1 == this.color)//这个判断条件还需要优化 如果有人投降
                         {
-                            playing();
+                            Playing();
                         }
 
                     }
@@ -195,7 +195,7 @@ namespace AngleFighter
 
         // 下棋 
         override
-        public void sendPlayChess(Chess chess)
+        public void SendPlayChess(Chess chess)
         {
             try
             {
@@ -234,14 +234,15 @@ namespace AngleFighter
             }
         }
 
-        public override void waiting()
+        public override void Waiting()
         {
             throw new NotImplementedException();
         }
 
-        public override void playing()
+        public override void Playing()
         {
             throw new NotImplementedException();
         }
     }
 }
+*/

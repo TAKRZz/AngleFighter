@@ -65,7 +65,7 @@ namespace AngleFighter.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _1Blue {
             get {
-                object obj = ResourceManager.GetObject("1Blue", resourceCulture);
+                object obj = ResourceManager.GetObject("_1Blue", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +75,7 @@ namespace AngleFighter.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _2Yellow {
             get {
-                object obj = ResourceManager.GetObject("2Yellow", resourceCulture);
+                object obj = ResourceManager.GetObject("_2Yellow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +85,7 @@ namespace AngleFighter.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _3Green {
             get {
-                object obj = ResourceManager.GetObject("3Green", resourceCulture);
+                object obj = ResourceManager.GetObject("_3Green", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +95,7 @@ namespace AngleFighter.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _4Red {
             get {
-                object obj = ResourceManager.GetObject("4Red", resourceCulture);
+                object obj = ResourceManager.GetObject("_4Red", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,6 +133,16 @@ namespace AngleFighter.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap BeginBtn2 {
+            get {
+                object obj = ResourceManager.GetObject("BeginBtn2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap BlueGrid {
             get {
                 object obj = ResourceManager.GetObject("BlueGrid", resourceCulture);
@@ -163,9 +173,39 @@ namespace AngleFighter.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Confirm {
+            get {
+                object obj = ResourceManager.GetObject("Confirm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Confirm2 {
+            get {
+                object obj = ResourceManager.GetObject("Confirm2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap CreatRoomBtn {
             get {
                 object obj = ResourceManager.GetObject("CreatRoomBtn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap CreatRoomBtn2 {
+            get {
+                object obj = ResourceManager.GetObject("CreatRoomBtn2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +223,29 @@ namespace AngleFighter.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap EnterBtn2 {
+            get {
+                object obj = ResourceManager.GetObject("EnterBtn2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap GameBackground {
             get {
                 object obj = ResourceManager.GetObject("GameBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap GameOverBackground {
+            get {
+                object obj = ResourceManager.GetObject("GameOverBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,6 +333,16 @@ namespace AngleFighter.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap RoomBackBtn2 {
+            get {
+                object obj = ResourceManager.GetObject("RoomBackBtn2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap RoomBackground {
             get {
                 object obj = ResourceManager.GetObject("RoomBackground", resourceCulture);
@@ -293,9 +363,39 @@ namespace AngleFighter.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap RoomBeginBtn2 {
+            get {
+                object obj = ResourceManager.GetObject("RoomBeginBtn2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap RoomNumberBackground {
             get {
                 object obj = ResourceManager.GetObject("RoomNumberBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Round {
+            get {
+                object obj = ResourceManager.GetObject("Round", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Round2 {
+            get {
+                object obj = ResourceManager.GetObject("Round2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -316,6 +416,26 @@ namespace AngleFighter.Properties {
         internal static System.Drawing.Bitmap SetBtn {
             get {
                 object obj = ResourceManager.GetObject("SetBtn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Surrender {
+            get {
+                object obj = ResourceManager.GetObject("Surrender", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Surrender2 {
+            get {
+                object obj = ResourceManager.GetObject("Surrender2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,7 +29,8 @@ namespace AngleFighter
         /*UP = 0;
         LEFT = 1;
         DOWN = 2;
-        RIGHT = 3;*/
+        RIGHT = 3;
+        */
 
         //棋子锚点，用于限定整个棋子的初始位置和颜色
         public Grid anchor = new Grid();
@@ -38,6 +40,7 @@ namespace AngleFighter
 
         //棋子初始化的方法，利用锚点的确定整个棋子的位置,在棋子的构造函数当中需要调用该方法
         public abstract void Init();
+
         //为棋子设置颜色
         public void InitColor(int x)
         {
@@ -65,7 +68,7 @@ namespace AngleFighter
             }
         }
 
-        //通过锚点初始化棋子在棋盘上的坐标数据
+        //改变存储棋子的grid们的位置
         public void InitPosition(int x, int y)
         {
             //获得坐标偏移量
@@ -79,6 +82,7 @@ namespace AngleFighter
                 grid.SetX(grid.GetY() + offsetY);
             }
         }
+
 
         //棋子的ToString方法
         public override string ToString()
@@ -107,7 +111,6 @@ namespace AngleFighter
             base.OnMouseDown(e);
             this.m_LastPoint = this.Location; 
             this.m_MousePoint = this.PointToScreen(e.Location);
-            /*this.DoDragDrop(this,DragDropEffects.Move);*/
             m_clicked = true;    
         }
 
