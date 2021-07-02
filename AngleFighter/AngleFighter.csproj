@@ -48,6 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Chess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GameOver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameOver.Designer.cs">
+      <DependentUpon>GameOver.cs</DependentUpon>
+    </Compile>
+>>>>>>> Stashed changes
     <Compile Include="Chess.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -176,6 +188,7 @@
     <None Include="Resources\GreenGrid.png" />
     <None Include="Resources\RedGrid.png" />
     <None Include="Resources\YellowGrid.png" />
+<<<<<<< Updated upstream
     <None Include="bin\Debug\1Blue.png" />
     <None Include="bin\Debug\2Yellow.png" />
     <None Include="bin\Debug\3Green.png" />
@@ -199,6 +212,10 @@
     <None Include="bin\Debug\RoomNumberBackground.png" />
     <None Include="bin\Debug\SetBtn.png" />
     <None Include="bin\Debug\YellowGrid.png" />
+=======
+    <Content Include="Properties\bgm.wav" />
+    <Content Include="Resources\GameBackground.png" />
+>>>>>>> Stashed changes
     <Content Include="Resources\Left.png" />
     <Content Include="Resources\Right.png" />
     <Content Include="Resources\Music.mp3" />
@@ -222,6 +239,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\LTrackBar\Demo\DemoControls\DemoControls.csproj">
+      <Project>{97C6E976-8BE7-4010-BC28-54275284923D}</Project>
+      <Name>DemoControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

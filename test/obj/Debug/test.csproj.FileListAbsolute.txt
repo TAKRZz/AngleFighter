@@ -9,3 +9,7 @@ C:\Users\24962\Documents\GitHub\AngleFighter\test\obj\Debug\test.csproj.CoreComp
 C:\Users\24962\Documents\GitHub\AngleFighter\test\obj\Debug\test.csproj.CopyComplete
 C:\Users\24962\Documents\GitHub\AngleFighter\test\obj\Debug\test.exe
 C:\Users\24962\Documents\GitHub\AngleFighter\test\obj\Debug\test.pdb
+D:\Angle Fighter\AngleFighter\test\obj\Debug\test.csprojAssemblyReference.cache
+D:\Angle Fighter\AngleFighter\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+D:\Angle Fighter\AngleFighter\test\obj\Debug\test.exe
+D:\Angle Fighter\AngleFighter\test\obj\Debug\test.pdb

@@ -13,9 +13,11 @@ namespace AngleFighter
 {
     public partial class BeginForm : Form
     {
+        public static BeginForm beginForm;
         public BeginForm()
         {
             InitializeComponent();
+            beginForm = this;
         }
 
         private void BeginForm_Load(object sender, EventArgs e)
@@ -52,6 +54,24 @@ namespace AngleFighter
         private void BeginBtn_MouseDown(object sender, MouseEventArgs e)
         {
             BeginBtn.BackgroundImage = global::AngleFighter.Properties.Resources.BeginBtn2;
+        }
+
+        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
+        {
+
+            axWindowsMediaPlayer1.Ctlcontrols.play();
+            axWindowsMediaPlayer1.URL = "bgm.wav";
+
+            axWindowsMediaPlayer1.settings.volume = 50;
+        }
+
+        private void axWindowsMediaPlayer1_Enter_1(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.Ctlcontrols.play();
+            axWindowsMediaPlayer1.URL = "bgm.wav";
+
+            axWindowsMediaPlayer1.settings.volume = 50;
+            axWindowsMediaPlayer1.settings.setMode("loop", true);
         }
     }
 }
